@@ -1,6 +1,6 @@
 require("dotenv").config();
 module.exports = {
-  staging: {
+  development: {
     client: "pg",
     connection: {
       database: "profumo",
