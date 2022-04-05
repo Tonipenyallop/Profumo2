@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 export default function Top() {
-    const [top, setTop] = useState([])
+    const [top, setTop] = useState<any[]>([])
     const navigate = useNavigate()
     
     async function getAllTop()  {
@@ -24,7 +24,7 @@ export default function Top() {
             <button className="button" onClick={()=> navigate('/')}>HEHE</button>
             {top.map((e,idx)=> {
                 return <div className="" key={idx}>
-                    {e.name}
+                    { e.name }
                     {e.description}
                     {e.concentration}
                     {e.size}

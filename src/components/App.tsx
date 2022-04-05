@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="bg-blue-300">
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/top" element={<Top />} />
+        <Route  path="/" element={<Home />} />
+        <Route  path="/top" element={<Top />} />
 
       </Routes>
     </div>
