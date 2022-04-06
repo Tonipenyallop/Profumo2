@@ -1,5 +1,6 @@
 import React from "react";
 import {useNavigate} from 'react-router-dom'
+import Count from "./Count";
 import MenuBar from "./MenuBar";
 export default function Home() {
   
@@ -11,6 +12,7 @@ export default function Home() {
     <div className="bg-img">
 
       <MenuBar/>
+      <Count/>
       <div className="flex justify-center items-center">
         <div className="bg-white">
         <img src={require('../../images/applying-cologne.jpeg')} alt="" />
