@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export default function Card({top} : any) {
+export default function Card({top , setVisibleCart, visibleCart} : any) {
     const [clicked, setClicked] = useState<boolean>(false)
 
     function toggleDescription(idx : number){
@@ -29,7 +29,7 @@ export default function Card({top} : any) {
         }
 
         setClicked(!clicked)
-        console.log(clicked)
+        
     }
     function getElement(idx:number){
         return document.getElementById(`${idx}`)
@@ -51,8 +51,15 @@ export default function Card({top} : any) {
                     {e.size}
                     </div>
                     <img className="max-h-72 min-h-max" src={e.url} alt="" />
-                    <div className=""></div>
-                    <button className="button">Add To Cart</button>
+                    <div className="text-center">{e.price}</div>
+                    <button className="button" onClick={()=> {
+                        // visible cart and add the value
+                        console.log('clicked')
+                        console.log(visibleCart)
+
+                        setVisibleCart(true)
+
+                    }}>Add To Cart</button>
                 </div>
                 
             })}
