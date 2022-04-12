@@ -52,6 +52,7 @@ export default function Card({top , setVisibleCart, visibleCart} : any) {
                     </div>
                     <img className="max-h-72 min-h-max" src={e.url} alt="" />
                     <div className="text-center">{e.price}</div>
+                    
                     <button className="button" onClick={()=> {
                         // visible cart and add the value
                         console.log('clicked')

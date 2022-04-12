@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 
-export default function Cart({visibleCart}:any) {
+export default function Cart({visibleCart, setVisibleCart}:any) {
     useEffect(() => {
         console.log('hehe')
         console.log(visibleCart)
@@ -20,6 +20,9 @@ export default function Cart({visibleCart}:any) {
         <div className="">
             <div id='cart' className="bg-red-300 fixed invisible right-7   transition-all duration-700">
                 <div className="">Total €</div>
+                <button className="button" onClick={()=> {
+                    setVisibleCart(false)
+                }}>X</button>
                 <button className="button">Go pay</button>
             </div>
         </div>

@@ -27,7 +27,7 @@ export default function Top() {
     },[])
     return (
         <div>
-            <Cart visibleCart={visibleCart}/>
+            <Cart visibleCart={visibleCart} setVisibleCart={setVisibleCart}/>
             <div className="">
                 TOP PAGE
                 </div>
