@@ -11,7 +11,7 @@ exports.up = function (knex) {
     table.text("description").notNullable();
     table.string("size").notNullable();
     table.string("concentration").notNullable();
-    table.string("price").notNullable();
+    table.integer("price").notNullable();
   });
 };
 

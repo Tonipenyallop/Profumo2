@@ -8,7 +8,7 @@ exports.seed = async function (knex) {
   await knex("cologne").insert([
     {
       name: "Naxos",
-      price: "€180",
+      price: 180,
       concentration: "Eau de Parfum",
       size: "100ml",
       description:
@@ -17,7 +17,7 @@ exports.seed = async function (knex) {
     },
     {
       name: "Alexandria II",
-      price: "€410",
+      price: 410,
       concentration: "Parfum",
       size: "100ml",
       description:
@@ -26,7 +26,7 @@ exports.seed = async function (knex) {
     },
     {
       name: "Renaissance",
-      price: "€180",
+      price: 180,
       concentration: "Eau de Parfum",
       size: "100ml",
       description:
@@ -35,7 +35,7 @@ exports.seed = async function (knex) {
     },
     {
       name: "Nio",
-      price: "€197",
+      price: 197,
       concentration: "Parfum",
       size: "50ml",
       description:
@@ -44,7 +44,7 @@ exports.seed = async function (knex) {
     },
     {
       name: "Mefisto Gentiluomo",
-      price: "€220",
+      price: 220,
       concentration: "Eau de Parfum",
       size: "100ml",
       description:
