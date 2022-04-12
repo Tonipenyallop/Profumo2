@@ -6,7 +6,7 @@ export default function Card({top} : any) {
     function toggleDescription(idx : number){
         const element = getElement(idx);
         const description  = element?.querySelector('#description')
-        
+
         if(description?.classList.contains('h-0')){
             // description?.classList.remove('invisible')
             // description?.classList.remove('max-h-0')
@@ -51,7 +51,10 @@ export default function Card({top} : any) {
                     {e.size}
                     </div>
                     <img className="max-h-72 min-h-max" src={e.url} alt="" />
+                    <div className=""></div>
+                    <button className="button">Add To Cart</button>
                 </div>
+                
             })}
         </div>
     )
