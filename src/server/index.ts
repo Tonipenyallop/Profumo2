@@ -1,16 +1,14 @@
 require("dotenv").config();
-import express from "express";
-import cors from 'cors';
-
-const app = express();
+import express, {Application, Request, Response, NextFunction} from "express";
+const cors = require('cors')
+const app: Application = express();
 const PORT = process.env.PORT || 8888;
-import db from '../server/db'
-// const db = require("../server/db.ts");
+const db = require("../server/db.ts");
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname + "/build"));
 
-app.get("/all", async (req ,res)  =>  {
+app.get("/all", async (_: Request ,res: Response)  =>  {
   const all = await db.select("*").from("cologne");
   res.send(all);
 });
