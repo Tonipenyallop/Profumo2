@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "nodemon src/server/index.tsx",
+    "dev": "nodemon src/server/index.ts",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
