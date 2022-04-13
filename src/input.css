@@ -11,6 +11,9 @@
   }
 }
 
-.bg-img {
+/* .bg-img {
   background-image: url(./images/luxury-bg.jpeg);
+} */
+.bg-spraying {
+  background-image: url(./images/applying-cologne.webp);
 }

@@ -4,6 +4,8 @@ import axios from "axios";
 
 import Card from "./Card";
 import Cart from "./Cart";
+import FirstPageCard from "./FirstPageCard";
+import SecondPageCard from "./SecondPageCard";
 
 export default function Top() {
   // interface CardProps {
@@ -24,12 +26,16 @@ export default function Top() {
     getAllTop();
   }, []);
   return (
-    <div>
+    <div className="bg-black">
       <Cart visibleCart={visibleCart} setVisibleCart={setVisibleCart} />
       <div className="">TOP PAGE</div>
       <button className="button" onClick={() => navigate("/")}>
         HEHE
       </button>
+      {/* <div className="w-[300px] h-[420px] bg-transparent cursor-pointer group perspective">
+        <FirstPageCard top={top} />
+        <SecondPageCard top={top} />
+      </div> */}
       <Card
         top={top}
         setVisibleCart={setVisibleCart}
