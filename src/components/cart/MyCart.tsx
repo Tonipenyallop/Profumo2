@@ -7,6 +7,9 @@ export default function MyCart({ allItems, setAllItems }: any) {
     const url = element?.children?.[5].src;
     return url;
   }
+  function getElement(idx: number) {
+    return document.getElementById(`${idx}`);
+  }
   function getChosenItemPrice(element: any): string {
     const price = element?.children?.[6].innerText;
     return price;
@@ -16,11 +19,16 @@ export default function MyCart({ allItems, setAllItems }: any) {
     return name;
   }
   function removeItem(idx: number): void {
-    const filteredItem = allItems.filter((e: any) => e.id != idx);
-    for (let e of allItems) {
-      console.log(e.id);
-      console.log(idx);
-    }
+    // for (let e of allItems) {
+    //   // console.log(getElement(idx));
+    //   console.log(e.children?.[0].innerText);
+    //   // console.log(idx);
+    // }
+    const elementText = getElement(idx)?.children?.[1].textContent;
+
+    const filteredItem = allItems.filter(
+      (e: any) => elementText !== e.children?.[0].innerText
+    );
     setAllItems(filteredItem);
   }
 
@@ -36,6 +44,7 @@ export default function MyCart({ allItems, setAllItems }: any) {
         <div
           className="border-8 border-red-300 flex justify-center items-center"
           key={`${idx}`}
+          id={`${idx}`}
         >
           <img
             className="flex w-[100px] bg-white"
