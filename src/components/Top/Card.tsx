@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
-export default function Card({ top, setVisibleCart, visibleCart }: any) {
+export default function Card({
+  top,
+  setVisibleCart,
+  visibleCart,
+  setChosenItem,
+}: any) {
   const [clicked, setClicked] = useState<boolean>(false);
 
   function toggleDescription(idx: number) {
@@ -33,12 +38,12 @@ export default function Card({ top, setVisibleCart, visibleCart }: any) {
     return document.getElementById(`${idx}`);
   }
   return (
-    <div className="flex flex-wrap justify-center items-start border-blue-800 border-4 transition-all duration-1000 backface-hidden ">
+    <div className="flex flex-wrap justify-center items-start transition-all duration-1000 backface-hidden ">
       {top &&
         top.map((e: any, idx: number) => {
           return (
-            <div className="flex  flex-col border-8 " key={idx} id={`${idx}`}>
-              <div className="flex border-8 items-center justify-center text-white">
+            <div className="flex  flex-col border-2" key={idx} id={`${idx}`}>
+              <div className="flex items-center justify-center text-white">
                 {e.name}
               </div>
               <div className="">
@@ -53,10 +58,10 @@ export default function Card({ top, setVisibleCart, visibleCart }: any) {
               <div id="description" className="description h-0 ">
                 {e.description}
               </div>
-              <div className="flex border-8 items-center justify-center text-white">
+              <div className="flex  items-center justify-center text-white">
                 {e.concentration}
               </div>
-              <div className="flex border-8 items-center justify-center text-white">
+              <div className="flex  items-center justify-center text-white">
                 {e.size}
               </div>
               <img className="max-h-72 min-h-max" src={e.url} alt="" />
@@ -64,11 +69,11 @@ export default function Card({ top, setVisibleCart, visibleCart }: any) {
 
               <button
                 className="button"
-                onClick={() => {
+                onClick={(): void => {
                   // visible cart and add the value
                   console.log("clicked");
                   console.log(visibleCart);
-
+                  setChosenItem(getElement(idx));
                   setVisibleCart(true);
                 }}
               >

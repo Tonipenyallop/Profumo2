@@ -13,6 +13,8 @@ export default function Top() {
   // }
   const [visibleCart, setVisibleCart] = useState<boolean>(false);
   const [top, setTop] = useState<any>([]);
+  const [chosenItem, setChosenItem] = useState<any>(false);
+  const [allItems, setAllItems] = useState<any>([]);
   const navigate = useNavigate();
 
   async function getAllTop() {
@@ -27,10 +29,17 @@ export default function Top() {
   }, []);
   return (
     <div className="bg-black">
-      <Cart visibleCart={visibleCart} setVisibleCart={setVisibleCart} />
+      <Cart
+        visibleCart={visibleCart}
+        setVisibleCart={setVisibleCart}
+        chosenItem={chosenItem}
+      />
       <div className="">TOP PAGE</div>
       <button className="button" onClick={() => navigate("/")}>
         HEHE
+      </button>
+      <button className="button" onClick={() => navigate("/my-cart")}>
+        go my Cart
       </button>
       {/* <div className="w-[300px] h-[420px] bg-transparent cursor-pointer group perspective">
         <FirstPageCard top={top} />
@@ -40,6 +49,7 @@ export default function Top() {
         top={top}
         setVisibleCart={setVisibleCart}
         visibleCart={visibleCart}
+        setChosenItem={setChosenItem}
       />
     </div>
   );

@@ -17,8 +17,10 @@ export default function Home() {
       <div className="flex justify-center items-center "></div>
       <div className="flex flex-col justify-center items-center">
         <HomeTop />
-        <HomeSummer />
-        <HomeWinter />
+        <div className="flex ">
+          <HomeSummer />
+          <HomeWinter />
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ export default function HomeSummer() {
   const navigate = useNavigate();
 
   return (
-    <div className="border-8">
+    <div className="">
       <img
         className="w-full"
         src={require("../../images/summer.jpeg")}

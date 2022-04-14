@@ -5,7 +5,7 @@ export default function HomeWinter() {
   const navigate = useNavigate();
 
   return (
-    <div className="border-8">
+    <div className="">
       <img
         className="w-full"
         src={require("../../images/winter.jpeg")}
