@@ -75,7 +75,7 @@ export default function Card({
                   const chosenElement = getElement(idx);
                   setChosenItem(chosenElement);
 
-                  setVisibleCart(!visibleCart);
+                  setVisibleCart(true);
                   const allItemsSoFar = allItems;
                   setAllItems([...allItemsSoFar, chosenElement]);
                 }}
