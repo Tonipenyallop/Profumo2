@@ -38,8 +38,16 @@ export default function Top({ allItems, setAllItems }: any) {
         HEHE
       </button>
       <button className="button" onClick={() => navigate("/my-cart")}>
-        go My Cart
+        Go My Cart
       </button>
+
+      <img
+        className="bg-white w-[50px] cursor-pointer "
+        src={require("../../images/cologne-icon.webp")}
+        alt=""
+        onClick={() => navigate("/")}
+      />
+
       {/* <div className="w-[300px] h-[420px] bg-transparent cursor-pointer group perspective">
         <FirstPageCard top={top} />
         <SecondPageCard top={top} />
