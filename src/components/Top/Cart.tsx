@@ -6,20 +6,19 @@ export default function Cart({ visibleCart, setVisibleCart, chosenItem }: any) {
 
   setTimeout(() => {
     if (visibleCart) setVisibleCart(false);
-  }, 3000);
+  }, 5000);
 
   useEffect(() => {
-    console.log("hehe");
     console.log(visibleCart);
     const cart = document.getElementById("cart");
-    if (cart?.classList.contains("right-7")) {
-      cart?.classList.remove("invisible");
-      cart?.classList.add("right-0");
-      cart?.classList.remove("right-7");
+    if (cart?.classList.contains("top-[-999px]")) {
+      // cart?.classList.remove("invisible");
+      cart?.classList.add("top-0");
+      cart?.classList.remove("top-[-999px]");
     } else {
-      cart?.classList.add("invisible");
-      cart?.classList.remove("right-0");
-      cart?.classList.add("right-7");
+      // cart?.classList.add("invisible");
+      cart?.classList.remove("top-0");
+      cart?.classList.add("top-[-999px]");
     }
     getChosenItemImage();
     getChosenItemPrice();
@@ -42,7 +41,7 @@ export default function Cart({ visibleCart, setVisibleCart, chosenItem }: any) {
     <div className="">
       <div
         id="cart"
-        className="bg-red-300 fixed invisible right-7   transition-all duration-700"
+        className="bg-red-300 fixed  top-[-999px] right-0   transition-all duration-1000"
       >
         <div className="flex  justify-center items-center">
           <img
