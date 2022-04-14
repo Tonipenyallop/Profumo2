@@ -25,7 +25,7 @@ export default function AllItems({ allItems, setAllItems }: any) {
     setAllItems(filteredItem);
   }
   return (
-    <div>
+    <div className="px-5">
       {allItems?.length === 0 ? (
         <div className="text-white text-center">No items are added yet!</div>
       ) : (
@@ -33,7 +33,7 @@ export default function AllItems({ allItems, setAllItems }: any) {
       )}
       {allItems?.map((e: any, idx: number) => (
         <div
-          className="border-8 border-red-300 flex justify-center items-center"
+          className=" border-b-2 border-white flex justify-between items-center"
           key={`${idx}`}
           id={`${idx}`}
         >
@@ -42,20 +42,21 @@ export default function AllItems({ allItems, setAllItems }: any) {
             src={getChosenItemImage(e)}
             alt=""
           />
-          <div className="flex text-white mx-3">{getChosenItemName(e)}</div>
-
-          <div className="">
+          <div className="flex text-white break-words mx-3">
+            {getChosenItemName(e)}
+          </div>
+          <div className="flex items-center ">
             <div className="flex items-center">
               <button className="flex button">-</button>
               <div className="flex text-white">1</div>
               <button className="flex button">+</button>
             </div>
-          </div>
 
-          <div className="flex text-white mx-3">{getChosenItemPrice(e)}</div>
-          <button className="button" onClick={() => removeItem(idx)}>
-            X
-          </button>
+            <div className="flex text-white mx-3">{getChosenItemPrice(e)}</div>
+            <button className="button" onClick={() => removeItem(idx)}>
+              X
+            </button>
+          </div>
         </div>
       ))}
     </div>
