@@ -5,6 +5,8 @@ export default function Card({
   setVisibleCart,
   visibleCart,
   setChosenItem,
+  allItems,
+  setAllItems,
 }: any) {
   const [clicked, setClicked] = useState<boolean>(false);
 
@@ -70,11 +72,12 @@ export default function Card({
               <button
                 className="button"
                 onClick={(): void => {
-                  // visible cart and add the value
-                  console.log("clicked");
-                  console.log(visibleCart);
-                  setChosenItem(getElement(idx));
-                  setVisibleCart(true);
+                  const chosenElement = getElement(idx);
+                  setChosenItem(chosenElement);
+
+                  setVisibleCart(!visibleCart);
+                  const allItemsSoFar = allItems;
+                  setAllItems([...allItemsSoFar, chosenElement]);
                 }}
               >
                 Add To Cart

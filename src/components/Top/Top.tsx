@@ -7,14 +7,13 @@ import Cart from "./Cart";
 import FirstPageCard from "./FirstPageCard";
 import SecondPageCard from "./SecondPageCard";
 
-export default function Top() {
+export default function Top({ allItems, setAllItems }: any) {
   // interface CardProps {
   //     top : Array<string>
   // }
   const [visibleCart, setVisibleCart] = useState<boolean>(false);
   const [top, setTop] = useState<any>([]);
   const [chosenItem, setChosenItem] = useState<any>(false);
-  const [allItems, setAllItems] = useState<any>([]);
   const navigate = useNavigate();
 
   async function getAllTop() {
@@ -39,7 +38,7 @@ export default function Top() {
         HEHE
       </button>
       <button className="button" onClick={() => navigate("/my-cart")}>
-        go my Cart
+        go My Cart
       </button>
       {/* <div className="w-[300px] h-[420px] bg-transparent cursor-pointer group perspective">
         <FirstPageCard top={top} />
@@ -50,6 +49,8 @@ export default function Top() {
         setVisibleCart={setVisibleCart}
         visibleCart={visibleCart}
         setChosenItem={setChosenItem}
+        allItems={allItems}
+        setAllItems={setAllItems}
       />
     </div>
   );

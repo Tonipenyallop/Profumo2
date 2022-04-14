@@ -13,11 +13,11 @@ export default function Home() {
   return (
     <div className="bg-black">
       <MenuBar />
-      <Count />
+      {/* <Count /> */}
       <div className="flex justify-center items-center "></div>
       <div className="flex flex-col justify-center items-center">
         <HomeTop />
-        <div className="flex ">
+        <div className="flex">
           <HomeSummer />
           <HomeWinter />
         </div>
