@@ -55,7 +55,6 @@ export default function Top({ allItems, setAllItems }: any) {
       <Card
         top={top}
         setVisibleCart={setVisibleCart}
-        visibleCart={visibleCart}
         setChosenItem={setChosenItem}
         allItems={allItems}
         setAllItems={setAllItems}
