@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import Card from "./Card";
+import Card from "./cards/Card";
 import Cart from "./Cart";
-import FirstPageCard from "./FirstPageCard";
-import SecondPageCard from "./SecondPageCard";
+import FirstPageCard from "./cards/first-page/FirstPageCard";
+import SecondPageCard from "./cards/second-page/SecondPageCard";
 
 export default function Top({ allItems, setAllItems }: any) {
   // interface CardProps {
