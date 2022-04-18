@@ -1,19 +1,23 @@
 import React from "react";
+import { Children } from "react";
 
-export default function AllItems({ allItems, setAllItems }: any) {
+export default function AllItems({ allItems, setAllItems, chosenItem }: any) {
   function getElement(idx: number) {
     return document.getElementById(`${idx}`);
   }
   function getChosenItemImage(element: any): string {
-    const url = element?.children?.[5].src;
-    return url;
+    const chosenChildren = element?.children[2];
+    const src = chosenChildren?.children?.[3].src;
+    return src;
   }
   function getChosenItemPrice(element: any): string {
-    const price = element?.children?.[6].innerText;
+    const chosenChildren = element?.children?.[2];
+    const price = chosenChildren.children?.[4].innerText;
     return price;
   }
   function getChosenItemName(element: any): string {
-    const name = element?.children?.[0].innerText;
+    const chosenChildren = element?.children?.[0];
+    const name = chosenChildren.innerText;
     return name;
   }
   function removeItem(idx: number): void {

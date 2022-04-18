@@ -24,12 +24,13 @@ export default function FirstPageCard({
   function getElement(idx: number) {
     return document.getElementById(`${idx}`);
   }
+
   return (
     <div className="flex flex-wrap justify-center items-start border-4 border-red-700">
       {top &&
         top.map((e: any, idx: number) => {
           return (
-            <div className="relative">
+            <div className="relative" key={`${idx}`}>
               <FirstPageName />
               <div className="relative preserve-3d" key={idx}>
                 <div

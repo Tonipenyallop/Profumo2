@@ -24,15 +24,18 @@ export default function Cart({ visibleCart, setVisibleCart, chosenItem }: any) {
   }, [visibleCart]);
 
   function getChosenItemImage(): string {
-    const url = chosenItem?.children?.[5].src;
-    return url;
+    const chosenChildren = chosenItem?.children?.[2];
+    const src = chosenChildren?.children?.[3].src;
+    return src;
   }
   function getChosenItemPrice(): string {
-    const price = chosenItem?.children?.[6].innerText;
+    const chosenChildren = chosenItem?.children?.[2];
+    const price = chosenChildren?.children[4].innerText;
     return price;
   }
   function getChosenItemName(): string {
-    const name = chosenItem?.children?.[0].innerText;
+    const chosenChildren = chosenItem?.children?.[0];
+    const name = chosenChildren?.innerText;
     return name;
   }
   return (

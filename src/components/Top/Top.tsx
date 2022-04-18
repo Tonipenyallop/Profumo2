@@ -2,26 +2,29 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-import Card from "./cards/Card";
+import Card from "./Card/Card";
 import Cart from "./Cart";
-import FirstPageCard from "./cards/first-page/FirstPageCard";
-import SecondPageCard from "./cards/second-page/SecondPageCard";
+import FirstPageCard from "./Card/first-page/FirstPageCard";
+import SecondPageCard from "./Card/second-page/SecondPageCard";
 
-export default function Top({ allItems, setAllItems }: any) {
+export default function Top({
+  allItems,
+  setAllItems,
+  chosenItem,
+  setChosenItem,
+}: any) {
   // interface CardProps {
   //     top : Array<string>
   // }
   const [visibleCart, setVisibleCart] = useState<boolean>(false);
   const [top, setTop] = useState<any>([]);
-  const [chosenItem, setChosenItem] = useState<any>(false);
+
   const navigate = useNavigate();
 
   async function getAllTop() {
     const res = await axios.get("/all");
     const data = res.data;
     setTop(data);
-
-    console.log(top);
   }
   useEffect(() => {
     getAllTop();

@@ -2,8 +2,9 @@ import React from "react";
 
 export default function Total({ allItems }: any) {
   function getChosenItemPrice(element: any): number {
-    const price = parseInt(element?.children?.[6].innerText.split("€")[1]);
-    return price;
+    const chosenChildren = element?.children?.[2];
+    const price = chosenChildren.children?.[4].innerText.split("€")[1];
+    return parseInt(price);
   }
   function getTotal(): number {
     return allItems.reduce((a: any, b: any) => {
