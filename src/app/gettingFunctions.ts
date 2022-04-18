@@ -13,7 +13,7 @@ export function getChosenItemPrice(element: any): string {
 }
 export function getChosenItemName(element: any): string {
   if (!element) return "";
-
+  console.log(element);
   const name = element?.querySelector(".name").innerText;
   // const name = chosenChildren.innerText;
   return name;

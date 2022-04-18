@@ -1,20 +1,16 @@
-import e from "express";
 import React from "react";
 import {
-  // getElement,
+  getElement,
   getChosenItemImage,
   getChosenItemPrice,
   getChosenItemName,
 } from "../../app/gettingFunctions";
-export default function AllItems({ allItems, setAllItems, chosenItem }: any) {
+export default function AllItems({ allItems, setAllItems }: any) {
   function removeItem(idx: number): void {
-    function getElement(idx: number) {
-      return document.getElementById(`${idx}`);
-    }
-    const elementText = getElement(idx)?.children?.[1].textContent;
-
+    const element = getElement(idx);
+    const name = element?.children?.[1].textContent;
     const filteredItem = allItems.filter(
-      (e: any) => elementText !== e.children?.[0].innerText
+      (e: any) => name !== getChosenItemName(e)
     );
     setAllItems(filteredItem);
   }
