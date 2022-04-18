@@ -1,26 +1,16 @@
+import e from "express";
 import React from "react";
-import { Children } from "react";
-
+import {
+  // getElement,
+  getChosenItemImage,
+  getChosenItemPrice,
+  getChosenItemName,
+} from "../../app/gettingFunctions";
 export default function AllItems({ allItems, setAllItems, chosenItem }: any) {
-  function getElement(idx: number) {
-    return document.getElementById(`${idx}`);
-  }
-  function getChosenItemImage(element: any): string {
-    const chosenChildren = element?.children[2];
-    const src = chosenChildren?.children?.[3].src;
-    return src;
-  }
-  function getChosenItemPrice(element: any): string {
-    const chosenChildren = element?.children?.[2];
-    const price = chosenChildren.children?.[4].innerText;
-    return price;
-  }
-  function getChosenItemName(element: any): string {
-    const chosenChildren = element?.children?.[0];
-    const name = chosenChildren.innerText;
-    return name;
-  }
   function removeItem(idx: number): void {
+    function getElement(idx: number) {
+      return document.getElementById(`${idx}`);
+    }
     const elementText = getElement(idx)?.children?.[1].textContent;
 
     const filteredItem = allItems.filter(
@@ -28,6 +18,7 @@ export default function AllItems({ allItems, setAllItems, chosenItem }: any) {
     );
     setAllItems(filteredItem);
   }
+
   return (
     <div className="px-5">
       {allItems?.length === 0 ? (
@@ -37,7 +28,7 @@ export default function AllItems({ allItems, setAllItems, chosenItem }: any) {
       )}
       {allItems?.map((e: any, idx: number) => (
         <div
-          className=" border-b-2 border-white flex justify-between items-center"
+          className=" border-2 border-green-300 flex justify-between items-center"
           key={`${idx}`}
           id={`${idx}`}
         >

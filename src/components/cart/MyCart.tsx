@@ -15,6 +15,7 @@ export default function MyCart({ allItems, setAllItems }: any) {
   //     return a + price;
   //   }, 0);
   // }
+
   return (
     <div className="bg-black">
       <p className="text-white text-center py-5">MY CART</p>

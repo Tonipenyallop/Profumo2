@@ -4,8 +4,6 @@ import axios from "axios";
 
 import Card from "./Card/Card";
 import Cart from "./Cart";
-import FirstPageCard from "./Card/first-page/FirstPageCard";
-import SecondPageCard from "./Card/second-page/SecondPageCard";
 
 export default function Top({
   allItems,
@@ -29,6 +27,7 @@ export default function Top({
   useEffect(() => {
     getAllTop();
   }, []);
+
   return (
     <div className="bg-black">
       <Cart

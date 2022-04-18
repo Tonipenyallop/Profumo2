@@ -5,19 +5,20 @@ export default function CardButtons({ idx }: any) {
     return document.getElementById(`${idx}`);
   }
   return (
-    <div>
-      <button className="button">Description</button>
+    <div className="flex justify-center items-center flex-wrap">
       <button
         className="button"
         onClick={() => {
-          const e = getElement(idx);
-          e?.classList.add("card-flip-180");
-          // console.log(getElement(idx));
+          // const e = getElement(idx);
+          // e?.classList.add("card-flip-180");
+
+          document
+            .getElementById(`jeje-${idx}`)
+            ?.classList.add("card-flip-180");
         }}
       >
-        Description
+        Detail
       </button>
-      <button className="button">Description</button>
     </div>
   );
 }

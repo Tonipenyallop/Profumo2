@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
-
+import {
+  getChosenItemImage,
+  getChosenItemPrice,
+  getChosenItemName,
+} from "../../app/gettingFunctions";
 export default function Cart({ visibleCart, setVisibleCart, chosenItem }: any) {
   const navigate = useNavigate();
 
@@ -9,7 +13,6 @@ export default function Cart({ visibleCart, setVisibleCart, chosenItem }: any) {
   }, 5000);
 
   useEffect(() => {
-    console.log(visibleCart);
     const cart = document.getElementById("cart");
     if (cart?.classList.contains("top-[-999px]")) {
       cart?.classList.add("top-0");
@@ -18,41 +21,28 @@ export default function Cart({ visibleCart, setVisibleCart, chosenItem }: any) {
       cart?.classList.remove("top-0");
       cart?.classList.add("top-[-999px]");
     }
-    getChosenItemImage();
-    getChosenItemPrice();
-    getChosenItemName();
+    getChosenItemImage(chosenItem);
+    getChosenItemPrice(chosenItem);
+    getChosenItemName(chosenItem);
   }, [visibleCart]);
 
-  function getChosenItemImage(): string {
-    const chosenChildren = chosenItem?.children?.[2];
-    const src = chosenChildren?.children?.[3].src;
-    return src;
-  }
-  function getChosenItemPrice(): string {
-    const chosenChildren = chosenItem?.children?.[2];
-    const price = chosenChildren?.children[4].innerText;
-    return price;
-  }
-  function getChosenItemName(): string {
-    const chosenChildren = chosenItem?.children?.[0];
-    const name = chosenChildren?.innerText;
-    return name;
-  }
   return (
     <div className="">
       <div
         id="cart"
-        className="border-2 bg-gray-700 fixed  top-[-999px] right-0 w-[400px]  transition-all duration-1000"
+        className="z-10 border-2 bg-gray-700 fixed  top-[-999px] right-0 w-[400px]  transition-all duration-1000"
       >
         <div className="flex mt-3 justify-around items-center  ">
           <img
             className="w-[100px] h-[100px] bg-white "
-            src={getChosenItemImage()}
+            src={getChosenItemImage(chosenItem)}
             alt=""
           />
           <div className="flex flex-col justify-center items-center">
-            <div className="text-white ">{getChosenItemName()}</div>
-            <div className="text-white mx-3">{getChosenItemPrice()}</div>
+            <div className="text-white ">{getChosenItemName(chosenItem)}</div>
+            <div className="text-white mx-3">
+              {getChosenItemPrice(chosenItem)}
+            </div>
           </div>
           <button
             className="button"
