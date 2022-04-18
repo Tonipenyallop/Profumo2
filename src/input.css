@@ -9,6 +9,9 @@
   .description {
     @apply flex items-center justify-center break-words max-w-xs  transition-all  duration-1000 overflow-scroll bg-yellow-300;
   }
+  .seasons {
+    @apply flex border-4 text-white bg-blue-600 transition-all duration-1000;
+  }
 }
 
 /* .bg-img {

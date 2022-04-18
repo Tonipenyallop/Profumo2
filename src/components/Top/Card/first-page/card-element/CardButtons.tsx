@@ -7,6 +7,15 @@ export default function CardButtons({ idx }: any) {
         className="button"
         onClick={() => {
           document.getElementById(`${idx}`)?.classList.add("card-flip-180");
+          const a = document
+            .getElementById(`${idx}`)
+            ?.querySelectorAll(".seasons");
+          console.log(a);
+          setTimeout(() => {
+            document
+              .querySelectorAll(".seasons")
+              .forEach((e: any) => e.classList.remove("w-[0%]"));
+          }, 1000);
         }}
       >
         Detail

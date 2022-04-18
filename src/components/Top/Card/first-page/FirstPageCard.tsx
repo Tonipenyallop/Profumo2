@@ -75,6 +75,12 @@ export default function FirstPageCard({
                   setVisibleCart={setVisibleCart}
                   allItems={allItems}
                   setAllItems={setAllItems}
+                  spring={e.spring}
+                  summer={e.summer}
+                  fall={e.fall}
+                  winter={e.winter}
+                  day={e.day}
+                  night={e.night}
                 />
               </div>
             </div>
