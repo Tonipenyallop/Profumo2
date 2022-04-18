@@ -12,6 +12,12 @@ exports.up = function (knex) {
     table.string("size").notNullable();
     table.string("concentration").notNullable();
     table.integer("price").notNullable();
+    table.integer("spring").notNullable();
+    table.integer("summer").notNullable();
+    table.integer("fall").notNullable();
+    table.integer("winter").notNullable();
+    table.integer("day").notNullable();
+    table.integer("night").notNullable();
   });
 };
 
