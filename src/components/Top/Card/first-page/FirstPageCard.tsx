@@ -2,7 +2,7 @@ import React from "react";
 import CardButtons from "./card-element/CardButtons";
 
 import FirstPageName from "./card-element/FirstPageName";
-import SecondPageCard from "../second-page/SecondPageCard";
+import SecondPageCard from "./second-page/SecondPageCard";
 import FirstPageBody from "./card-element/FirstPageBody";
 import AddToCart from "./card-element/AddToCart";
 export default function FirstPageCard({
@@ -71,6 +71,10 @@ export default function FirstPageCard({
                   concentration={e.concentration}
                   size={e.size}
                   description={e.description}
+                  setChosenItem={setChosenItem}
+                  setVisibleCart={setVisibleCart}
+                  allItems={allItems}
+                  setAllItems={setAllItems}
                 />
               </div>
             </div>
