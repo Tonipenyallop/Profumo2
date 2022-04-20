@@ -13,6 +13,7 @@ exports.up = function (knex) {
     table.string("concentration").notNullable();
     table.integer("price").notNullable();
     table.json("seasons").notNullable();
+    table.integer("quantity").notNullable();
   });
 };
 
