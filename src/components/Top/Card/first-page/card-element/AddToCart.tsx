@@ -23,7 +23,7 @@ export default function AddToCart({
   return (
     <div className="flex justify-center items-center">
       <button
-        className="button w-full"
+        className="button "
         onClick={(): void => {
           // const chosenElement = getElement(idx);
           // setChosenItem(chosenElement);

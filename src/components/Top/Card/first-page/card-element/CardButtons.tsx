@@ -1,20 +1,32 @@
 import React from "react";
 import { getElement } from "../../../../../app/gettingFunctions";
-export default function CardButtons({ idx }: any) {
+export default function CardButtons({
+  idx,
+  spring,
+  summer,
+  fall,
+  winter,
+  day,
+  night,
+}: any) {
+  const seasonData = [spring, summer, fall, winter, day, night];
   return (
     <div className="flex justify-center items-center flex-wrap">
       <button
         className="button"
-        onClick={() => {
-          document.getElementById(`${idx}`)?.classList.add("card-flip-180");
-          const a = document
-            .getElementById(`${idx}`)
-            ?.querySelectorAll(".seasons");
-          console.log(a);
+        onClick={(): void => {
+          const card = document.getElementById(`${idx}`);
+          card?.classList.add("card-flip-180");
+
           setTimeout(() => {
-            document
-              .querySelectorAll(".seasons")
-              .forEach((e: any) => e.classList.remove("w-[0%]"));
+            card
+              ?.querySelectorAll(".seasons")
+              .forEach((e: any, idx: number) => {
+                console.log(e);
+                // e.classList.remove("w-[0%]");
+                // e.classList.add(`w-[${seasonData[idx] * 10}%]`);
+                // e.classList.add(`w-[${dataPercentage * 10}%]`);
+              });
           }, 1000);
         }}
       >

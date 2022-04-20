@@ -1,5 +1,6 @@
 import React from "react";
 import { getElement } from "../../../../../app/gettingFunctions";
+import SeasonData from "./SeasonData";
 
 export default function SecondPageCard({
   idx,
@@ -10,12 +11,7 @@ export default function SecondPageCard({
   setVisibleCart,
   allItems,
   setAllItems,
-  spring,
-  summer,
-  fall,
-  winter,
-  day,
-  night,
+  seasons,
 }: any) {
   function addToCart(): void {
     const chosenElement = getElement(idx);
@@ -33,31 +29,23 @@ export default function SecondPageCard({
         </div>
         <div className="flex   text-white">{size}</div>
         <div className="mx-3 my-3 text-white break-words">{description}</div>
-        <div className="seasons-data flex flex-col  border-4 w-full scale-100">
-          {/* <div className={`border-4 text-white bg-blue-600 w-[80%]`}>toni</div> */}
-          <div className="">
-            Spring:
-            <div className={`seasons w-[0%] w-[${spring * 10}%]`}>{spring}</div>
+
+        <div className="flex border-4 w-full">
+          <div className="flex flex-col border-4 ">
+            <div className="text-white">spring</div>
+            <div className="text-white">summer</div>
+            <div className="text-white">fall</div>
+            <div className="text-white">winter</div>
+            <div className="text-white">day</div>
+            <div className="text-white">night</div>
           </div>
-          <div className="">
-            Summer:
-            <div className={`seasons w-[0%] w-[${summer * 10}%]`}>{summer}</div>
-          </div>
-          <div className="">
-            Fall:
-            <div className={`seasons w-[0%] w-[${fall * 10}%]`}>{fall}</div>
-          </div>
-          <div className="">
-            Winter:
-            <div className={`seasons w-[0%] w-[${winter * 10}%]`}>{winter}</div>
-          </div>
-          <div className="">
-            Day:
-            <div className={`seasons w-[0%] w-[${day * 10}%]`}>{day}</div>
-          </div>
-          <div className="">
-            Night:
-            <div className={`seasons w-[0%] w-[${night * 10}%]`}>{night}</div>
+          <div className="flex flex-col border-4 w-full">
+            <SeasonData season={seasons.spring} seasonName={"spring"} />
+            <SeasonData season={seasons.summer} seasonName={"summer"} />
+            <SeasonData season={seasons.fall} seasonName={"fall"} />
+            <SeasonData season={seasons.winter} seasonName={"winter"} />
+            <SeasonData season={seasons.day} seasonName={"day"} />
+            <SeasonData season={seasons.night} seasonName={"night"} />
           </div>
         </div>
         <button

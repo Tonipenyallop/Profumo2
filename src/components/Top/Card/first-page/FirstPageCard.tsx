@@ -12,19 +12,6 @@ export default function FirstPageCard({
   allItems,
   setAllItems,
 }: any) {
-  // function flippingCard(idx: number) {
-  //   const element = getElement(idx);
-  //   const backPart = document.getElementById(`${idx}-des`);
-  //   backPart?.parentElement?.classList.remove("invisible");
-  //   // backPart?.classList.remove("invisible");
-  //   if (element?.classList.contains("card-flip-180"))
-  //     element?.classList.remove("card-flip-180");
-  //   else element?.classList.add("card-flip-180");
-  // }
-  // function getElement(idx: number) {
-  //   return document.getElementById(`${idx}`);
-  // }
-
   return (
     <div
       className="relative flex flex-wrap justify-around items-center"
@@ -32,6 +19,7 @@ export default function FirstPageCard({
     >
       {top &&
         top.map((e: any, idx: number) => {
+          console.log(e.seasons);
           return (
             <div
               className="relative preserve-3d transition-all duration-1000"
@@ -41,14 +29,7 @@ export default function FirstPageCard({
                 className="relative preserve-3d transition-all duration-1000  h-[750px] w-[500px] "
                 id={`${idx}`}
               >
-                <div
-                  className="absolute  backface-hidden top-0 w-full h-full"
-                  // onClick={() =>
-                  //   document
-                  //     .getElementById(`jeje-${idx}`)
-                  //     ?.classList.add("card-flip-180")
-                  // }
-                >
+                <div className="absolute  backface-hidden top-0 w-full h-full">
                   <FirstPageBody
                     concentration={e.concentration}
                     size={e.size}
@@ -56,14 +37,16 @@ export default function FirstPageCard({
                     price={e.price}
                   />
                   <FirstPageName name={e.name} price={e.price} />
-                  <CardButtons idx={idx} />
-                  <AddToCart
-                    idx={idx}
-                    setChosenItem={setChosenItem}
-                    setVisibleCart={setVisibleCart}
-                    allItems={allItems}
-                    setAllItems={setAllItems}
-                  />
+                  <div className="flex justify-center items-center">
+                    <CardButtons idx={idx} />
+                    <AddToCart
+                      idx={idx}
+                      setChosenItem={setChosenItem}
+                      setVisibleCart={setVisibleCart}
+                      allItems={allItems}
+                      setAllItems={setAllItems}
+                    />
+                  </div>
                 </div>
                 {/* below is back page */}
                 <SecondPageCard
@@ -75,12 +58,7 @@ export default function FirstPageCard({
                   setVisibleCart={setVisibleCart}
                   allItems={allItems}
                   setAllItems={setAllItems}
-                  spring={e.spring}
-                  summer={e.summer}
-                  fall={e.fall}
-                  winter={e.winter}
-                  day={e.day}
-                  night={e.night}
+                  seasons={e.seasons}
                 />
               </div>
             </div>
