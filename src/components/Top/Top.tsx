@@ -4,8 +4,8 @@ import axios from "axios";
 
 import Card from "./Card/Card";
 import Cart from "./Cart";
-import Icon from "./Card/Icon";
-import { GiFallingLeaf } from "react-icons/gi";
+import TopCartButton from "./TopCartButton";
+
 export default function Top({
   allItems,
   setAllItems,
@@ -34,16 +34,8 @@ export default function Top({
         chosenItem={chosenItem}
       />
 
-      <div className="bg-white">
-        <Icon icon={<GiFallingLeaf size="24" />} />
-      </div>
-
-      <button className="button" onClick={() => navigate("/")}>
-        HEHE
-      </button>
-      <button className="button" onClick={() => navigate("/my-cart")}>
-        Go My Cart
-      </button>
+      <div className="bg-white"></div>
+      <TopCartButton />
 
       <img
         className="bg-white w-[50px] cursor-pointer "
