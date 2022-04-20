@@ -4,12 +4,9 @@ import { FaUmbrellaBeach, FaSnowflake, FaMoon } from "react-icons/fa";
 import { SiSpring } from "react-icons/si";
 import { WiDaySunny } from "react-icons/wi";
 import Icon from "../../Icon";
+import Stars from "./Stars";
 
-export default function SeasonData({ season, seasonName }: any) {
-  function arrayMaker(): Array<number> {
-    return new Array(season).fill("a");
-  }
-
+export default function SeasonData({ seasonName, seasonNumber }: any) {
   let icon: any;
   if (seasonName === "spring") icon = <SiSpring size="24" />;
   else if (seasonName === "summer") icon = <FaUmbrellaBeach size="24" />;
@@ -18,24 +15,13 @@ export default function SeasonData({ season, seasonName }: any) {
   else if (seasonName === "day") icon = <WiDaySunny size="24" />;
   else icon = <FaMoon size="24" />;
 
-  let color = "";
-  if (seasonName === "spring") color = "bg-green-400";
-  else if (seasonName === "summer") color = "bg-red-300";
-  else if (seasonName === "fall") color = "bg-yellow-600";
-  else if (seasonName === "winter") color = "bg-blue-300";
-  else if (seasonName === "day") color = "bg-yellow-400";
-  else color = "bg-blue-600";
-
   return (
-    <div className={`seasons`}>
+    <div className={`seasons `}>
       <div className="flex justify-start ">
-        {arrayMaker().map((e: any, idx: number) => {
-          return (
-            <div className={`${color}`} key={`${idx}`}>
-              <Icon icon={icon} />
-            </div>
-          );
-        })}
+        <Icon icon={icon} />
+      </div>
+      <div className="flex flex-col  w-full">
+        <Stars number={seasonNumber} />
       </div>
     </div>
   );

@@ -10,7 +10,7 @@
     @apply flex items-center justify-center break-words max-w-xs  transition-all  duration-1000 overflow-scroll bg-yellow-300;
   }
   .seasons {
-    @apply flex text-white;
+    @apply flex text-white justify-start;
   }
 }
 

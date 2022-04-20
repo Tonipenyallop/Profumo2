@@ -1,6 +1,7 @@
 import React from "react";
 import { getElement } from "../../../../../app/gettingFunctions";
 import SeasonData from "./SeasonData";
+import Stars from "./Stars";
 
 export default function SecondPageCard({
   idx,
@@ -23,7 +24,7 @@ export default function SecondPageCard({
   const seasonName = ["spring", "summer", "fall", "winter", "day", "night"];
 
   return (
-    <div className="absolute card-flip-180 backface-hidden top-0 w-full h-full border-blue-700 border-4 z-[5]">
+    <div className="absolute card-flip-180 backface-hidden top-0 w-full h-full z-[5]">
       <div className="flex flex-col items-center">
         <div className="flex flex-col flex-wrap   text-white">
           {concentration}
@@ -31,19 +32,13 @@ export default function SecondPageCard({
         <div className="flex   text-white">{size}</div>
         <div className="mx-3 my-3 text-white break-words">{description}</div>
 
-        <div className="flex justify-center items-center  border-4 border-green-400 w-full">
-          <div className="flex flex-col items-center w-full ">
+        <div className="flex justify-center items-center ">
+          <div className="flex flex-col  items-start w-full">
             {seasonName.map((e: string) => {
-              return <div className="text-white">{e}</div>;
+              return (
+                <SeasonData seasonName={`${e}`} seasonNumber={seasons[e]} />
+              );
             })}
-          </div>
-          <div className="flex flex-col  w-full">
-            <SeasonData season={seasons.spring} seasonName={"spring"} />
-            <SeasonData season={seasons.summer} seasonName={"summer"} />
-            <SeasonData season={seasons.fall} seasonName={"fall"} />
-            <SeasonData season={seasons.winter} seasonName={"winter"} />
-            <SeasonData season={seasons.day} seasonName={"day"} />
-            <SeasonData season={seasons.night} seasonName={"night"} />
           </div>
         </div>
         <button
