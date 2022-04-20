@@ -12,9 +12,6 @@ export default function Top({
   chosenItem,
   setChosenItem,
 }: any) {
-  // interface CardProps {
-  //     top : Array<string>
-  // }
   const [visibleCart, setVisibleCart] = useState<boolean>(false);
   const [top, setTop] = useState<any>([]);
 

@@ -20,6 +20,7 @@ export default function SecondPageCard({
     const allItemsSoFar = allItems;
     setAllItems([...allItemsSoFar, chosenElement]);
   }
+  const seasonName = ["spring", "summer", "fall", "winter", "day", "night"];
 
   return (
     <div className="absolute card-flip-180 backface-hidden top-0 w-full h-full border-blue-700 border-4 z-[5]">
@@ -30,16 +31,13 @@ export default function SecondPageCard({
         <div className="flex   text-white">{size}</div>
         <div className="mx-3 my-3 text-white break-words">{description}</div>
 
-        <div className="flex border-4 w-full">
-          <div className="flex flex-col border-4 ">
-            <div className="text-white">spring</div>
-            <div className="text-white">summer</div>
-            <div className="text-white">fall</div>
-            <div className="text-white">winter</div>
-            <div className="text-white">day</div>
-            <div className="text-white">night</div>
+        <div className="flex justify-center items-center  border-4 border-green-400 w-full">
+          <div className="flex flex-col items-center w-full ">
+            {seasonName.map((e: string) => {
+              return <div className="text-white">{e}</div>;
+            })}
           </div>
-          <div className="flex flex-col border-4 w-full">
+          <div className="flex flex-col  w-full">
             <SeasonData season={seasons.spring} seasonName={"spring"} />
             <SeasonData season={seasons.summer} seasonName={"summer"} />
             <SeasonData season={seasons.fall} seasonName={"fall"} />
