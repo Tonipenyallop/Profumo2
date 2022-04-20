@@ -7,7 +7,6 @@ export default function Card({
   allItems,
   setAllItems,
 }: any) {
-  console.log(allItems);
   return (
     <div className="relative preserve-3d">
       <div className="flex">

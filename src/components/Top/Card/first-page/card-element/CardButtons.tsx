@@ -22,7 +22,6 @@ export default function CardButtons({
             card
               ?.querySelectorAll(".seasons")
               .forEach((e: any, idx: number) => {
-                console.log(e);
                 // e.classList.remove("w-[0%]");
                 // e.classList.add(`w-[${seasonData[idx] * 10}%]`);
                 // e.classList.add(`w-[${dataPercentage * 10}%]`);

@@ -19,17 +19,17 @@ export default function FirstPageCard({
     >
       {top &&
         top.map((e: any, idx: number) => {
-          console.log(e.seasons);
           return (
             <div
-              className="relative preserve-3d transition-all duration-1000"
+              className="relative preserve-3d transition-all duration-1000 z-10"
               key={`${idx}`}
             >
               <div
                 className="relative preserve-3d transition-all duration-1000  h-[750px] w-[500px] "
                 id={`${idx}`}
               >
-                <div className="absolute  backface-hidden top-0 w-full h-full">
+                {/* backface-hidden */}
+                <div className="absolute backface-hidden  top-0 w-full h-full">
                   <FirstPageBody
                     concentration={e.concentration}
                     size={e.size}

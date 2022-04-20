@@ -24,7 +24,8 @@ export default function SecondPageCard({
   const seasonName = ["spring", "summer", "fall", "winter", "day", "night"];
 
   return (
-    <div className="absolute card-flip-180 backface-hidden top-0 w-full h-full z-[5]">
+    // backface-hidden
+    <div className="absolute card-flip-180 backface-hidden top-0 w-full h-full border-4">
       <div className="flex flex-col items-center">
         <div className="flex flex-col flex-wrap   text-white">
           {concentration}
@@ -34,15 +35,19 @@ export default function SecondPageCard({
 
         <div className="flex justify-center items-center ">
           <div className="flex flex-col  items-start w-full">
-            {seasonName.map((e: string) => {
+            {seasonName.map((e: string, index: number) => {
               return (
-                <SeasonData seasonName={`${e}`} seasonNumber={seasons[e]} />
+                <SeasonData
+                  key={`${index}`}
+                  seasonName={`${e}`}
+                  seasonNumber={seasons[e]}
+                />
               );
             })}
           </div>
         </div>
         <button
-          className="button relative  w-full"
+          className="button   w-full"
           onClick={() => {
             addToCart();
           }}
@@ -50,7 +55,7 @@ export default function SecondPageCard({
           Add to Cart
         </button>
         <button
-          className="button relative"
+          className="button "
           onClick={() =>
             document.getElementById(`${idx}`)?.classList.remove("card-flip-180")
           }
