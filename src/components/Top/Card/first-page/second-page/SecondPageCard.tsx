@@ -25,7 +25,7 @@ export default function SecondPageCard({
 
   return (
     // backface-hidden
-    <div className="absolute card-flip-180 backface-hidden top-0 w-full h-full border-4">
+    <div className="absolute card-flip-180 backface-hidden top-0 w-full h-full ">
       <div className="flex flex-col items-center">
         <div className="flex flex-col flex-wrap   text-white">
           {concentration}

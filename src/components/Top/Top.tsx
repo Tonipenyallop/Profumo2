@@ -5,6 +5,7 @@ import axios from "axios";
 import Card from "./Card/Card";
 import Cart from "./Cart";
 import TopCartButton from "./TopCartButton";
+import TopProfumoIcon from "./Card/TopProfumoIcon";
 
 export default function Top({
   allItems,
@@ -14,6 +15,7 @@ export default function Top({
 }: any) {
   const [visibleCart, setVisibleCart] = useState<boolean>(false);
   const [top, setTop] = useState<any>([]);
+  const [itemsNumber, setItemsNumber] = useState<number>(0);
 
   const navigate = useNavigate();
 
@@ -35,19 +37,11 @@ export default function Top({
       />
 
       <div className="bg-white"></div>
-      <TopCartButton />
+      <div className="relative">
+        <TopProfumoIcon />
+        <TopCartButton />
+      </div>
 
-      <img
-        className="bg-white w-[50px] cursor-pointer "
-        src={require("../../images/cologne-icon.webp")}
-        alt=""
-        onClick={() => navigate("/")}
-      />
-
-      {/* <div className="w-[300px] h-[420px] bg-transparent cursor-pointer group perspective">
-        <FirstPageCard top={top} />
-        <SecondPageCard top={top} />
-      </div> */}
       <Card
         top={top}
         setVisibleCart={setVisibleCart}
