@@ -35,6 +35,8 @@ function App() {
               setAllItems={setAllItems}
               chosenItem={chosenItem}
               setChosenItem={setChosenItem}
+              tempCart={tempCart}
+              setTempCart={setTempCart}
             />
           }
         />

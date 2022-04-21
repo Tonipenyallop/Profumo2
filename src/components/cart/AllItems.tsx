@@ -4,8 +4,14 @@ import {
   getChosenItemImage,
   getChosenItemPrice,
   getChosenItemName,
+  getQuantity,
 } from "../../app/gettingFunctions";
-export default function AllItems({ allItems, setAllItems }: any) {
+export default function AllItems({
+  allItems,
+  setAllItems,
+  tempCart,
+  setTempCart,
+}: any) {
   function removeItem(idx: number): void {
     const element = getElement(idx);
     const name = element?.children?.[1].textContent;
@@ -14,7 +20,8 @@ export default function AllItems({ allItems, setAllItems }: any) {
     );
     setAllItems(filteredItem);
   }
-  console.log(allItems);
+
+  console.log(tempCart);
   return (
     <div className="px-5">
       {allItems?.length === 0 ? (
@@ -33,13 +40,18 @@ export default function AllItems({ allItems, setAllItems }: any) {
             src={getChosenItemImage(e)}
             alt=""
           />
-          <div className="flex text-white break-words mx-3">
+          <div className="flex name text-white break-words mx-3">
             {getChosenItemName(e)}
           </div>
           <div className="flex items-center ">
-            <div className="flex items-center">
+            <div
+              className="flex items-center"
+              onClick={() => getQuantity(idx, tempCart)}
+            >
               <button className="flex button">-</button>
-              <div className="flex text-white">1</div>
+              <div className="flex text-white">
+                {getQuantity(idx, tempCart)}
+              </div>
               <button className="flex button">+</button>
             </div>
 

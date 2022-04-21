@@ -17,3 +17,12 @@ export function getChosenItemName(element: any): string {
   // const name = chosenChildren.innerText;
   return name;
 }
+
+export function getQuantity(index: number, cart: any): number {
+  const element = getElement(index);
+  const nameOfBottle = getChosenItemName(element);
+  let quantity: number = 0;
+  for (let key in cart) if (key === nameOfBottle) quantity = cart[key];
+
+  return quantity;
+}

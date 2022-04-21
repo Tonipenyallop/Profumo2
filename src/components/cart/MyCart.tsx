@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 import AllItems from "./AllItems";
 import Total from "./Total";
 
-export default function MyCart({ allItems, setAllItems }: any) {
+export default function MyCart({
+  allItems,
+  setAllItems,
+  tempCart,
+  setTempCart,
+}: any) {
   const navigate = useNavigate();
   // function getChosenItemPrice(element: any): number {
   //   const price = parseInt(element?.children?.[6].innerText.split("€")[1]);
@@ -20,7 +25,12 @@ export default function MyCart({ allItems, setAllItems }: any) {
     <div className="bg-black">
       <p className="text-white text-center py-5">MY CART</p>
       <div className="flex justify-center items-center flex-wrap">
-        <AllItems allItems={allItems} setAllItems={setAllItems} />
+        <AllItems
+          allItems={allItems}
+          setAllItems={setAllItems}
+          tempCart={tempCart}
+          setTempCart={setTempCart}
+        />
         <Total allItems={allItems} />
       </div>
       <button className="button" onClick={() => navigate("/top")}>
