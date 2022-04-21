@@ -2,6 +2,7 @@ import React from "react";
 import {
   getElement,
   getChosenItemName,
+  isMoreThanTwo,
 } from "../../../../../app/gettingFunctions";
 
 export default function AddToCart({
@@ -21,15 +22,16 @@ export default function AddToCart({
     const chosenElement = getElement(idx);
     setChosenItem(chosenElement);
     setVisibleCart(true);
-    const allItemsSoFar = allItems;
     const nameOfBottle = getChosenItemName(chosenElement);
     let temp = tempCart;
     console.log(temp);
     if (!temp[`${nameOfBottle}`]) temp[`${nameOfBottle}`] = 1;
     else temp[`${nameOfBottle}`] += 1;
     setTempCart(temp);
-    console.log(temp);
 
+    console.log(isMoreThanTwo());
+
+    const allItemsSoFar = allItems;
     setAllItems([...allItemsSoFar, chosenElement]);
   }
 

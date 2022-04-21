@@ -18,11 +18,16 @@ export function getChosenItemName(element: any): string {
   return name;
 }
 
-export function getQuantity(index: number, cart: any): number {
-  const element = getElement(index);
-  const nameOfBottle = getChosenItemName(element);
+export function getQuantity(e: any, cart: any): number {
+  const nameOfBottle = getChosenItemName(e);
   let quantity: number = 0;
-  for (let key in cart) if (key === nameOfBottle) quantity = cart[key];
-
+  for (let key in cart) {
+    if (key === nameOfBottle) quantity = cart[key];
+  }
+  console.log(quantity);
   return quantity;
+}
+
+export function isMoreThanTwo() {
+  console.log("called isMOreTHanTew");
 }

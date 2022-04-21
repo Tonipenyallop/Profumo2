@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   getElement,
   getChosenItemImage,
@@ -21,7 +21,10 @@ export default function AllItems({
     setAllItems(filteredItem);
   }
 
-  console.log(tempCart);
+  useEffect(() => {
+    return () => {};
+  }, []);
+
   return (
     <div className="px-5">
       {allItems?.length === 0 ? (
@@ -44,14 +47,9 @@ export default function AllItems({
             {getChosenItemName(e)}
           </div>
           <div className="flex items-center ">
-            <div
-              className="flex items-center"
-              onClick={() => getQuantity(idx, tempCart)}
-            >
+            <div className="flex items-center">
               <button className="flex button">-</button>
-              <div className="flex text-white">
-                {getQuantity(idx, tempCart)}
-              </div>
+              <div className="flex text-white">{getQuantity(e, tempCart)}</div>
               <button className="flex button">+</button>
             </div>
 
