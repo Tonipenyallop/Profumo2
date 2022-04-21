@@ -12,10 +12,12 @@ export default function Top({
   setAllItems,
   chosenItem,
   setChosenItem,
+  tempCart,
+  setTempCart,
 }: any) {
   const [visibleCart, setVisibleCart] = useState<boolean>(false);
   const [top, setTop] = useState<any>([]);
-  const [itemsNumber, setItemsNumber] = useState<number>(0);
+  const [totalItemsNumber, setTotalItemsNumber] = useState<number>(0);
 
   const navigate = useNavigate();
 
@@ -48,6 +50,8 @@ export default function Top({
         setChosenItem={setChosenItem}
         allItems={allItems}
         setAllItems={setAllItems}
+        tempCart={tempCart}
+        setTempCart={setTempCart}
       />
     </div>
   );

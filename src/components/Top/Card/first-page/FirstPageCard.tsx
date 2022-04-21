@@ -11,6 +11,8 @@ export default function FirstPageCard({
   setVisibleCart,
   allItems,
   setAllItems,
+  tempCart,
+  setTempCart,
 }: any) {
   return (
     <div
@@ -45,6 +47,8 @@ export default function FirstPageCard({
                       setVisibleCart={setVisibleCart}
                       allItems={allItems}
                       setAllItems={setAllItems}
+                      tempCart={tempCart}
+                      setTempCart={setTempCart}
                     />
                   </div>
                 </div>

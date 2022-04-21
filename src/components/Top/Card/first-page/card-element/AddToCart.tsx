@@ -1,5 +1,8 @@
 import React from "react";
-import { getElement } from "../../../../../app/gettingFunctions";
+import {
+  getElement,
+  getChosenItemName,
+} from "../../../../../app/gettingFunctions";
 
 export default function AddToCart({
   idx,
@@ -7,6 +10,8 @@ export default function AddToCart({
   setVisibleCart,
   allItems,
   setAllItems,
+  tempCart,
+  setTempCart,
 }: any) {
   // function getElement(idx: number) {
   //   return document.getElementById(`${idx}`);
@@ -17,6 +22,14 @@ export default function AddToCart({
     setChosenItem(chosenElement);
     setVisibleCart(true);
     const allItemsSoFar = allItems;
+    const nameOfBottle = getChosenItemName(chosenElement);
+    let temp = tempCart;
+    console.log(temp);
+    if (!temp[`${nameOfBottle}`]) temp[`${nameOfBottle}`] = 1;
+    else temp[`${nameOfBottle}`] += 1;
+    setTempCart(temp);
+    console.log(temp);
+
     setAllItems([...allItemsSoFar, chosenElement]);
   }
 

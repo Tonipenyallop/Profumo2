@@ -8,6 +8,8 @@ import MyCart from "./cart/MyCart";
 function App() {
   const [allItems, setAllItems] = useState<any>([]);
   const [chosenItem, setChosenItem] = useState<any>(false);
+  const [tempCart, setTempCart] = useState<any>({});
+
   return (
     <div className="bg-blue-300">
       <Routes>
@@ -20,6 +22,8 @@ function App() {
               setAllItems={setAllItems}
               chosenItem={chosenItem}
               setChosenItem={setChosenItem}
+              tempCart={tempCart}
+              setTempCart={setTempCart}
             />
           }
         />

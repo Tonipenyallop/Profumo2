@@ -6,6 +6,8 @@ export default function Card({
   setChosenItem,
   allItems,
   setAllItems,
+  tempCart,
+  setTempCart,
 }: any) {
   return (
     <div className="relative preserve-3d">
@@ -16,6 +18,8 @@ export default function Card({
           setVisibleCart={setVisibleCart}
           allItems={allItems}
           setAllItems={setAllItems}
+          tempCart={tempCart}
+          setTempCart={setTempCart}
         />
       </div>
     </div>
