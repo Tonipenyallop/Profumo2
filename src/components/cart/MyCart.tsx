@@ -31,7 +31,7 @@ export default function MyCart({
           tempCart={tempCart}
           setTempCart={setTempCart}
         />
-        <Total allItems={allItems} />
+        <Total allItems={allItems} tempCart={tempCart} />
       </div>
       <button className="button" onClick={() => navigate("/top")}>
         Go Top page

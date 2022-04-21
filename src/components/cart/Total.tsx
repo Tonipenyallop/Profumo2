@@ -1,9 +1,15 @@
 import React from "react";
-import { getChosenItemPrice } from "../../app/gettingFunctions";
-export default function Total({ allItems }: any) {
+import {
+  getChosenItemPrice,
+  getChosenItemName,
+  getQuantity,
+} from "../../app/gettingFunctions";
+export default function Total({ allItems, tempCart }: any) {
   function getTotal(): number {
     return allItems.reduce((a: any, b: any) => {
       let price = parseInt(getChosenItemPrice(b).split("€")[1]);
+      const quantity = getQuantity(b, tempCart);
+      price *= quantity;
       return a + price;
     }, 0);
   }
