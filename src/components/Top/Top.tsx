@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
+import axios from "axios";
 import Card from "./Card/Card";
 import Cart from "./Cart";
 import TopCartButton from "./TopCartButton";
 import TopProfumoIcon from "./Card/TopProfumoIcon";
-import { getTotalQuantity } from "../../app/gettingFunctions";
 
 export default function Top({
   allItems,
@@ -19,12 +17,10 @@ export default function Top({
   const [visibleCart, setVisibleCart] = useState<boolean>(false);
   const [top, setTop] = useState<any>([]);
 
-  console.log(getTotalQuantity(tempCart));
-  const navigate = useNavigate();
-
   async function getAllTop() {
     const res = await axios.get("/all");
     const data = res.data;
+    // window.localStorage.setItem("top", JSON.stringify(data));
     setTop(data);
   }
 

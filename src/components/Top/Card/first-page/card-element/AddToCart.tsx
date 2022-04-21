@@ -4,6 +4,8 @@ import {
   getChosenItemName,
   isMoreThanTwo,
   getTotalQuantity,
+  getChosenItemImage,
+  getChosenItemPrice,
 } from "../../../../../app/gettingFunctions";
 
 export default function AddToCart({
@@ -27,14 +29,30 @@ export default function AddToCart({
     setTempCart(temp);
 
     const allItemsSoFar = allItems;
+    console.log(allItemsSoFar);
+    console.log(allItems);
+
+    // for removing duplicated items on my cart
     const isFirstTimeAdded = isMoreThanTwo(chosenElement, tempCart);
     if (isFirstTimeAdded) setAllItems([...allItemsSoFar, chosenElement]);
-    console.log("jeje", getTotalQuantity(tempCart));
+
     window.localStorage.setItem(
       "totalQuantity",
       getTotalQuantity(tempCart).toString()
     );
   }
+
+  let obj: any = {};
+  for (let e of allItems) {
+    const name = getChosenItemName(e);
+    const url = getChosenItemImage(e);
+    const price = getChosenItemPrice(e);
+    obj[`${name}`] = {};
+    obj[`${name}`].name = name;
+    obj[`${name}`].url = url;
+    obj[`${name}`].price = price;
+  }
+  window.localStorage.setItem("items", JSON.stringify(obj));
 
   return (
     <div className="flex justify-center items-center">

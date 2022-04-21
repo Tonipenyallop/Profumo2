@@ -30,7 +30,6 @@ export default function FirstPageCard({
                 className="relative preserve-3d transition-all duration-1000  h-[750px] w-[500px] "
                 id={`${idx}`}
               >
-                {/* backface-hidden */}
                 <div className="absolute backface-hidden  top-0 w-full h-full">
                   <FirstPageBody
                     concentration={e.concentration}

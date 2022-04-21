@@ -4,7 +4,6 @@ import {
   getChosenItemImage,
   getChosenItemPrice,
   getChosenItemName,
-  getQuantity,
   getTotalQuantity,
 } from "../../app/gettingFunctions";
 export default function AllItems({
@@ -13,9 +12,26 @@ export default function AllItems({
   tempCart,
   setTempCart,
 }: any) {
-  function removeItem(idx: number): void {
-    const element = getElement(idx);
-    const name = element?.children?.[1].textContent;
+  // function removeItem(idx: number): void {
+  //   const element = getElement(idx);
+  //   const name = element?.children?.[1].textContent;
+  //   const filteredItem = allItems.filter(
+  //     (e: any) => name !== getChosenItemName(e)
+  //   );
+  //   setAllItems(filteredItem);
+
+  //   // for setting quantity for each items
+  //   const temp = tempCart;
+  //   temp[`${name}`] = 0;
+  //   setTempCart(temp);
+
+  //   // to decrease item quantity
+  //   window.localStorage.setItem(
+  //     "totalQuantity",
+  //     getTotalQuantity(tempCart).toString()
+  //   );
+  // }
+  function removeItem(name: string): void {
     const filteredItem = allItems.filter(
       (e: any) => name !== getChosenItemName(e)
     );
@@ -31,43 +47,68 @@ export default function AllItems({
       "totalQuantity",
       getTotalQuantity(tempCart).toString()
     );
+    items[name] = undefined;
+
+    console.log(items[name]);
+    window.localStorage.setItem("items", JSON.stringify(items));
+  }
+
+  let items: any = window.localStorage.getItem("items");
+  items = JSON.parse(items);
+  const keys: any = [];
+  for (let key in items) {
+    console.log(key);
+    keys.push(key);
+  }
+  console.log(items);
+
+  function getQuantity(nameOfBottle: string, cart: any): number {
+    let quantity: number = 0;
+    for (let key in cart) if (key === nameOfBottle) quantity = cart[key];
+
+    return quantity;
   }
 
   return (
     <div className="px-5">
-      {allItems?.length === 0 ? (
+      {keys?.length === 0 ? (
         <div className="text-white text-center">No items are added yet!</div>
       ) : (
         <div className=""></div>
       )}
-      {allItems?.map((e: any, idx: number) => (
-        <div
-          className=" border-2 border-green-300 flex justify-between items-center"
-          key={`${idx}`}
-          id={`${idx}`}
-        >
-          <img
-            className="flex w-[100px] bg-white"
-            src={getChosenItemImage(e)}
-            alt=""
-          />
-          <div className="flex name text-white break-words mx-3">
-            {getChosenItemName(e)}
-          </div>
-          <div className="flex items-center ">
-            <div className="flex items-center">
-              <button className="flex button">-</button>
-              <div className="flex text-white">{getQuantity(e, tempCart)}</div>
-              <button className="flex button">+</button>
+      {keys.map((e: any, idx: number) => {
+        return (
+          <div
+            className=" border-2 border-green-300 flex justify-between items-center"
+            key={`${idx}`}
+            id={`${idx}`}
+          >
+            <img
+              className="flex w-[100px] bg-white"
+              src={`${items[`${e}`].url}`}
+              alt=""
+            />
+            <div className="flex name text-white break-words mx-3">
+              {items[`${e}`].name}
             </div>
+            <div className="flex items-center ">
+              <div className="flex items-center">
+                <button className="flex button">-</button>
+                <div className="flex text-white">
+                  {/* {getQuantity(e, tempCart)} */}
+                  {getQuantity(e, tempCart)}
+                </div>
+                <button className="flex button">+</button>
+              </div>
 
-            <div className="flex text-white mx-3">{getChosenItemPrice(e)}</div>
-            <button className="button" onClick={() => removeItem(idx)}>
-              X
-            </button>
+              <div className="flex text-white mx-3">{items[`${e}`].price}</div>
+              <button className="button" onClick={() => removeItem(e)}>
+                X
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
