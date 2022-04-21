@@ -47,9 +47,8 @@ export default function AllItems({
       "totalQuantity",
       getTotalQuantity(tempCart).toString()
     );
+    // for removing items from local storage
     items[name] = undefined;
-
-    console.log(items[name]);
     window.localStorage.setItem("items", JSON.stringify(items));
   }
 
@@ -61,13 +60,6 @@ export default function AllItems({
     keys.push(key);
   }
   console.log(items);
-
-  function getQuantity(nameOfBottle: string, cart: any): number {
-    let quantity: number = 0;
-    for (let key in cart) if (key === nameOfBottle) quantity = cart[key];
-
-    return quantity;
-  }
 
   return (
     <div className="px-5">
@@ -94,10 +86,7 @@ export default function AllItems({
             <div className="flex items-center ">
               <div className="flex items-center">
                 <button className="flex button">-</button>
-                <div className="flex text-white">
-                  {/* {getQuantity(e, tempCart)} */}
-                  {getQuantity(e, tempCart)}
-                </div>
+                <div className="flex text-white">{items[e].quantity}</div>
                 <button className="flex button">+</button>
               </div>
 

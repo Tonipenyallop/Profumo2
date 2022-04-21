@@ -51,6 +51,7 @@ export default function AddToCart({
     obj[`${name}`].name = name;
     obj[`${name}`].url = url;
     obj[`${name}`].price = price;
+    obj[`${name}`].quantity = 1;
   }
   window.localStorage.setItem("items", JSON.stringify(obj));
 

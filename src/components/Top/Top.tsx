@@ -20,7 +20,6 @@ export default function Top({
   async function getAllTop() {
     const res = await axios.get("/all");
     const data = res.data;
-    // window.localStorage.setItem("top", JSON.stringify(data));
     setTop(data);
   }
 
