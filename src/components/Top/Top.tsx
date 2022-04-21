@@ -6,6 +6,7 @@ import Card from "./Card/Card";
 import Cart from "./Cart";
 import TopCartButton from "./TopCartButton";
 import TopProfumoIcon from "./Card/TopProfumoIcon";
+import { getTotalQuantity } from "../../app/gettingFunctions";
 
 export default function Top({
   allItems,
@@ -18,7 +19,7 @@ export default function Top({
   const [visibleCart, setVisibleCart] = useState<boolean>(false);
   const [top, setTop] = useState<any>([]);
   const [totalItemsNumber, setTotalItemsNumber] = useState<number>(0);
-
+  console.log(getTotalQuantity(tempCart));
   const navigate = useNavigate();
 
   async function getAllTop() {
@@ -26,6 +27,7 @@ export default function Top({
     const data = res.data;
     setTop(data);
   }
+
   useEffect(() => {
     getAllTop();
   }, []);
@@ -41,7 +43,7 @@ export default function Top({
       <div className="bg-white"></div>
       <div className="relative">
         <TopProfumoIcon />
-        <TopCartButton />
+        <TopCartButton totalItemsNumber={totalItemsNumber} />
       </div>
 
       <Card
@@ -52,6 +54,7 @@ export default function Top({
         setAllItems={setAllItems}
         tempCart={tempCart}
         setTempCart={setTempCart}
+        setTotalItemsNumber={setTotalItemsNumber}
       />
     </div>
   );

@@ -3,6 +3,7 @@ import {
   getElement,
   getChosenItemName,
   isMoreThanTwo,
+  getTotalQuantity,
 } from "../../../../../app/gettingFunctions";
 
 export default function AddToCart({
@@ -13,11 +14,8 @@ export default function AddToCart({
   setAllItems,
   tempCart,
   setTempCart,
+  setTotalItemsNumber,
 }: any) {
-  // function getElement(idx: number) {
-  //   return document.getElementById(`${idx}`);
-  // }
-
   function addToCart(): void {
     const chosenElement = getElement(idx);
     setChosenItem(chosenElement);
@@ -32,6 +30,8 @@ export default function AddToCart({
     const allItemsSoFar = allItems;
     const isFirstTimeAdded = isMoreThanTwo(chosenElement, tempCart);
     if (isFirstTimeAdded) setAllItems([...allItemsSoFar, chosenElement]);
+
+    setTotalItemsNumber(getTotalQuantity(tempCart));
   }
 
   return (

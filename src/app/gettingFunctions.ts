@@ -26,7 +26,13 @@ export function getQuantity(element: any, cart: any): number {
   return quantity;
 }
 
-export function isMoreThanTwo(element: any, cart: any) {
+export function isMoreThanTwo(element: any, cart: any): boolean {
   const quantity = getQuantity(element, cart);
   return quantity === 1 ? true : false;
+}
+
+export function getTotalQuantity(cart: any): number {
+  let total = 0;
+  for (let key in cart) total += cart[key];
+  return total;
 }
