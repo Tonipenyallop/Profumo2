@@ -24,15 +24,14 @@ export default function AddToCart({
     setVisibleCart(true);
     const nameOfBottle = getChosenItemName(chosenElement);
     let temp = tempCart;
-    console.log(temp);
+
     if (!temp[`${nameOfBottle}`]) temp[`${nameOfBottle}`] = 1;
     else temp[`${nameOfBottle}`] += 1;
     setTempCart(temp);
 
-    console.log(isMoreThanTwo());
-
     const allItemsSoFar = allItems;
-    setAllItems([...allItemsSoFar, chosenElement]);
+    const isFirstTimeAdded = isMoreThanTwo(chosenElement, tempCart);
+    if (isFirstTimeAdded) setAllItems([...allItemsSoFar, chosenElement]);
   }
 
   return (
