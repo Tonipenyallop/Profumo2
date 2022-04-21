@@ -14,7 +14,7 @@ export default function AllItems({ allItems, setAllItems }: any) {
     );
     setAllItems(filteredItem);
   }
-
+  console.log(allItems);
   return (
     <div className="px-5">
       {allItems?.length === 0 ? (
