@@ -19,6 +19,10 @@ export default function AllItems({
       (e: any) => name !== getChosenItemName(e)
     );
     setAllItems(filteredItem);
+
+    const temp = tempCart;
+    temp[`${name}`] = undefined;
+    setTempCart(temp);
   }
 
   useEffect(() => {
