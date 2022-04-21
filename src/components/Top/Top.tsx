@@ -18,7 +18,7 @@ export default function Top({
 }: any) {
   const [visibleCart, setVisibleCart] = useState<boolean>(false);
   const [top, setTop] = useState<any>([]);
-  const [totalItemsNumber, setTotalItemsNumber] = useState<number>(0);
+
   console.log(getTotalQuantity(tempCart));
   const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ export default function Top({
       <div className="bg-white"></div>
       <div className="relative">
         <TopProfumoIcon />
-        <TopCartButton totalItemsNumber={totalItemsNumber} />
+        <TopCartButton />
       </div>
 
       <Card
@@ -54,7 +54,6 @@ export default function Top({
         setAllItems={setAllItems}
         tempCart={tempCart}
         setTempCart={setTempCart}
-        setTotalItemsNumber={setTotalItemsNumber}
       />
     </div>
   );

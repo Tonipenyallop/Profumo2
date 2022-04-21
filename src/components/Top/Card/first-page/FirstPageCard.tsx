@@ -13,7 +13,6 @@ export default function FirstPageCard({
   setAllItems,
   tempCart,
   setTempCart,
-  setTotalItemsNumber,
 }: any) {
   return (
     <div
@@ -50,7 +49,6 @@ export default function FirstPageCard({
                       setAllItems={setAllItems}
                       tempCart={tempCart}
                       setTempCart={setTempCart}
-                      setTotalItemsNumber={setTotalItemsNumber}
                     />
                   </div>
                 </div>

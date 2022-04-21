@@ -34,5 +34,6 @@ export function isMoreThanTwo(element: any, cart: any): boolean {
 export function getTotalQuantity(cart: any): number {
   let total = 0;
   for (let key in cart) total += cart[key];
+  console.log("return ", total);
   return total;
 }

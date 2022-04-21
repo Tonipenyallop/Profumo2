@@ -8,7 +8,6 @@ export default function Card({
   setAllItems,
   tempCart,
   setTempCart,
-  setTotalItemsNumber,
 }: any) {
   return (
     <div className="relative preserve-3d">
@@ -21,7 +20,6 @@ export default function Card({
           setAllItems={setAllItems}
           tempCart={tempCart}
           setTempCart={setTempCart}
-          setTotalItemsNumber={setTotalItemsNumber}
         />
       </div>
     </div>

@@ -5,6 +5,7 @@ import {
   getChosenItemPrice,
   getChosenItemName,
   getQuantity,
+  getTotalQuantity,
 } from "../../app/gettingFunctions";
 export default function AllItems({
   allItems,
@@ -20,14 +21,17 @@ export default function AllItems({
     );
     setAllItems(filteredItem);
 
+    // for setting quantity for each items
     const temp = tempCart;
-    temp[`${name}`] = undefined;
+    temp[`${name}`] = 0;
     setTempCart(temp);
-  }
 
-  useEffect(() => {
-    return () => {};
-  }, []);
+    // to decrease item quantity
+    window.localStorage.setItem(
+      "totalQuantity",
+      getTotalQuantity(tempCart).toString()
+    );
+  }
 
   return (
     <div className="px-5">

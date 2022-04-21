@@ -14,7 +14,6 @@ export default function AddToCart({
   setAllItems,
   tempCart,
   setTempCart,
-  setTotalItemsNumber,
 }: any) {
   function addToCart(): void {
     const chosenElement = getElement(idx);
@@ -30,8 +29,11 @@ export default function AddToCart({
     const allItemsSoFar = allItems;
     const isFirstTimeAdded = isMoreThanTwo(chosenElement, tempCart);
     if (isFirstTimeAdded) setAllItems([...allItemsSoFar, chosenElement]);
-
-    setTotalItemsNumber(getTotalQuantity(tempCart));
+    console.log("jeje", getTotalQuantity(tempCart));
+    window.localStorage.setItem(
+      "totalQuantity",
+      getTotalQuantity(tempCart).toString()
+    );
   }
 
   return (
