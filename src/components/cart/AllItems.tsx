@@ -53,6 +53,8 @@ export default function AllItems({
   function addQuantity(name: string): void {
     let temp = tempCart;
     const quantity = temp[name] + 1;
+    if (quantity > 10) return;
+
     temp[name] = quantity;
     window.localStorage.setItem("cart", JSON.stringify(temp));
     setTempCart(temp);
@@ -93,7 +95,7 @@ export default function AllItems({
             <div className="flex items-center ">
               <div className="flex items-center">
                 <button
-                  className="flex button"
+                  className="flex button "
                   onClick={() => decreaseQuantity(e)}
                 >
                   -
