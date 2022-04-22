@@ -20,12 +20,16 @@ export default function AddToCart({
   function addToCart(): void {
     const chosenElement = getElement(idx);
     setChosenItem(chosenElement);
-    setVisibleCart(true);
     const nameOfBottle = getChosenItemName(chosenElement);
     let temp = tempCart;
 
     if (!temp[`${nameOfBottle}`]) temp[`${nameOfBottle}`] = 1;
-    else temp[`${nameOfBottle}`] += 1;
+    else if (temp[`${nameOfBottle}`] < 10) temp[`${nameOfBottle}`] += 1;
+    else {
+      console.log("u cannot add item anymore");
+      return;
+    }
+    setVisibleCart(true);
     setTempCart(temp);
     // for setting cart in local storage
     window.localStorage.setItem("cart", JSON.stringify(tempCart));
