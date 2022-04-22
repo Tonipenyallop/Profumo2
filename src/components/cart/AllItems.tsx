@@ -12,6 +12,7 @@ export default function AllItems({
   tempCart,
   setTempCart,
 }: any) {
+  const [addFlag, setAddFlag] = useState<boolean>(false);
   function removeItem(name: string): void {
     const filteredItem = allItems.filter(
       (e: any) => name !== getChosenItemName(e)
@@ -37,7 +38,6 @@ export default function AllItems({
 
   let items: any = window.localStorage.getItem("items");
   items = JSON.parse(items);
-  console.log(items);
   const keys: any = [];
   for (let key in items) {
     keys.push(key);
@@ -48,6 +48,15 @@ export default function AllItems({
     const parsedCart = JSON.parse(cart);
     const quantity = parsedCart[name];
     return quantity;
+  }
+
+  function addQuantity(name: string) {
+    let temp = tempCart;
+    const quantity = temp[name] + 1;
+    temp[name] = quantity;
+    window.localStorage.setItem("cart", JSON.stringify(temp));
+    setTempCart(temp);
+    setAddFlag(!addFlag);
   }
 
   return (
@@ -76,7 +85,9 @@ export default function AllItems({
               <div className="flex items-center">
                 <button className="flex button">-</button>
                 <div className="flex text-white">{getQuantity(e)}</div>
-                <button className="flex button">+</button>
+                <button className="flex button" onClick={() => addQuantity(e)}>
+                  +
+                </button>
               </div>
 
               <div className="flex text-white mx-3">{items[`${e}`].price}</div>

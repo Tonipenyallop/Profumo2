@@ -23,7 +23,6 @@ export default function Total({ allItems, tempCart }: any) {
   items = JSON.parse(items);
   const keys: any = [];
   for (let key in items) {
-    console.log(key);
     keys.push(key);
   }
   return (
