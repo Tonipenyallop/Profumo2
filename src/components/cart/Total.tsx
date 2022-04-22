@@ -7,15 +7,12 @@ import {
 export default function Total({ allItems, tempCart }: any) {
   function getTotal(): number {
     return keys.reduce((a: any, b: any) => {
-      // let price = parseInt(getChosenItemPrice(b).split("€")[1]);
-      // const quantity = getQuantity(b, tempCart);
-      // price *= quantity;
-      // return a + price;
       let price = parseInt(items[b].price.split("€")[1]);
+      const cart: any = window.localStorage.getItem("cart");
+      const parsedCart: any = JSON.parse(cart);
+      const quantity = parsedCart[b];
 
-      // let price = parseInt(getChosenItemPrice(b).split("€")[1]);
-      // const quantity = getQuantity(b, tempCart);
-      // price *= quantity;
+      price *= quantity;
       return a + price;
     }, 0);
   }
