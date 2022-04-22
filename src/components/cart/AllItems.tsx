@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import {
   getElement,
   getChosenItemImage,
@@ -12,25 +12,6 @@ export default function AllItems({
   tempCart,
   setTempCart,
 }: any) {
-  // function removeItem(idx: number): void {
-  //   const element = getElement(idx);
-  //   const name = element?.children?.[1].textContent;
-  //   const filteredItem = allItems.filter(
-  //     (e: any) => name !== getChosenItemName(e)
-  //   );
-  //   setAllItems(filteredItem);
-
-  //   // for setting quantity for each items
-  //   const temp = tempCart;
-  //   temp[`${name}`] = 0;
-  //   setTempCart(temp);
-
-  //   // to decrease item quantity
-  //   window.localStorage.setItem(
-  //     "totalQuantity",
-  //     getTotalQuantity(tempCart).toString()
-  //   );
-  // }
   function removeItem(name: string): void {
     const filteredItem = allItems.filter(
       (e: any) => name !== getChosenItemName(e)
@@ -50,16 +31,24 @@ export default function AllItems({
     // for removing items from local storage
     items[name] = undefined;
     window.localStorage.setItem("items", JSON.stringify(items));
+    // for removing cart item form local storage
+    window.localStorage.setItem("cart", JSON.stringify(tempCart));
   }
 
   let items: any = window.localStorage.getItem("items");
   items = JSON.parse(items);
+  console.log(items);
   const keys: any = [];
   for (let key in items) {
-    console.log(key);
     keys.push(key);
   }
-  console.log(items);
+
+  function getQuantity(name: string): string {
+    const cart: any = window.localStorage.getItem("cart");
+    const parsedCart = JSON.parse(cart);
+    const quantity = parsedCart[name];
+    return quantity;
+  }
 
   return (
     <div className="px-5">
@@ -86,7 +75,7 @@ export default function AllItems({
             <div className="flex items-center ">
               <div className="flex items-center">
                 <button className="flex button">-</button>
-                <div className="flex text-white">{items[e].quantity}</div>
+                <div className="flex text-white">{getQuantity(e)}</div>
                 <button className="flex button">+</button>
               </div>
 

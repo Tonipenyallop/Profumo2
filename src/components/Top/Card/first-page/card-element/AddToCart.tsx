@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   getElement,
   getChosenItemName,
@@ -27,10 +27,9 @@ export default function AddToCart({
     if (!temp[`${nameOfBottle}`]) temp[`${nameOfBottle}`] = 1;
     else temp[`${nameOfBottle}`] += 1;
     setTempCart(temp);
-
+    // for setting cart in local storage
+    window.localStorage.setItem("cart", JSON.stringify(tempCart));
     const allItemsSoFar = allItems;
-    console.log(allItemsSoFar);
-    console.log(allItems);
 
     // for removing duplicated items on my cart
     const isFirstTimeAdded = isMoreThanTwo(chosenElement, tempCart);
@@ -42,29 +41,37 @@ export default function AddToCart({
     );
   }
 
-  let obj: any = {};
-  for (let e of allItems) {
-    const name = getChosenItemName(e);
-    const url = getChosenItemImage(e);
-    const price = getChosenItemPrice(e);
-    obj[`${name}`] = {};
-    obj[`${name}`].name = name;
-    obj[`${name}`].url = url;
-    obj[`${name}`].price = price;
-    obj[`${name}`].quantity = 1;
-  }
-  window.localStorage.setItem("items", JSON.stringify(obj));
+  useEffect(() => {
+    let obj: any = {};
+    for (let e of allItems) {
+      const name = getChosenItemName(e);
+      const url = getChosenItemImage(e);
+      const price = getChosenItemPrice(e);
+
+      obj[`${name}`] = {};
+      obj[`${name}`].name = name;
+      obj[`${name}`].url = url;
+      obj[`${name}`].price = price;
+      // if (bbb[name]?.quantity >= 1) {
+      //   console.log("inside of it ");
+      //   const tttt = obj[`${name}`].quantity;
+      //   console.log("ssss", tttt);
+      // } else {
+      //   console.log("out sise jiajcnoae");
+      //   obj[`${name}`].quantity = 1;
+      //   console.log(obj[`${name}`].quantity);
+      //   //  obj[`${name}`].quantity =
+      // }
+    }
+
+    window.localStorage.setItem("items", JSON.stringify(obj));
+  }, [allItems]);
 
   return (
     <div className="flex justify-center items-center">
       <button
         className="button "
         onClick={(): void => {
-          // const chosenElement = getElement(idx);
-          // setChosenItem(chosenElement);
-          // setVisibleCart(true);
-          // const allItemsSoFar = allItems;
-          // setAllItems([...allItemsSoFar, chosenElement]);
           addToCart();
         }}
       >
