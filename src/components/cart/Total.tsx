@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   getChosenItemPrice,
   getChosenItemName,
   getQuantity,
 } from "../../app/gettingFunctions";
 export default function Total({ allItems, tempCart }: any) {
+  const [totalFlag, setTotalFlag] = useState<boolean>(false);
+  useEffect(() => {
+    getTotal();
+    setTotalFlag(!totalFlag);
+  }, [totalFlag]);
+
   function getTotal(): number {
     return keys.reduce((a: any, b: any) => {
       let price = parseInt(items[b].price.split("€")[1]);
       const cart: any = window.localStorage.getItem("cart");
       const parsedCart: any = JSON.parse(cart);
       const quantity = parsedCart[b];
-
       price *= quantity;
       return a + price;
     }, 0);
