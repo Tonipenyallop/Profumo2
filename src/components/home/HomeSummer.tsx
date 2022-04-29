@@ -14,7 +14,7 @@ export default function HomeSummer() {
       <div className="absolute top-[10px] mx-5 my-2">
         <p className="flex text-white text-sm">VIEW NOW </p>
         <p className="flex text-white text-3xl">Summer Summer Summer</p>
-        <button className="flex button" onClick={() => navigate("/top")}>
+        <button className="flex button" onClick={() => navigate("/summer")}>
           To Summer Page
         </button>
       </div>

@@ -1,10 +1,25 @@
-require("dotenv").config();
-module.exports = {
+import type { Knex } from "knex";
+
+// Update with your config settings.
+
+const config: { [key: string]: Knex.Config } = {
+  // development: {
+  //   client: "postgresql",
+  //   connection: {
+  //     filename: "./dev.sqlite3",
+  //   },
+  // },
+
   development: {
-    client: "pg",
+    client: "postgresql",
     connection: {
       database: "profumo",
       user: process.env.DB_USER,
+      password: "",
+    },
+    pool: {
+      min: 2,
+      max: 10,
     },
     migrations: {
       tableName: "knex_migrations",
@@ -12,11 +27,11 @@ module.exports = {
   },
 
   production: {
-    client: "pg",
+    client: "postgresql",
     connection: {
       database: "profumo",
-      user: "username",
-      password: "password",
+      user: process.env.DB_USER,
+      password: "",
     },
     pool: {
       min: 2,
@@ -27,3 +42,5 @@ module.exports = {
     },
   },
 };
+
+module.exports = config;

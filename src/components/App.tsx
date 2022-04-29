@@ -5,6 +5,7 @@ import Home from "./home/Home";
 import "../input.css";
 import Top from "./Top/Top";
 import MyCart from "./cart/MyCart";
+import Summer from "./Summer";
 function App() {
   const [allItems, setAllItems] = useState<any>([]);
   const [chosenItem, setChosenItem] = useState<any>(false);
@@ -27,6 +28,8 @@ function App() {
             />
           }
         />
+        <Route path="/summer" element={<Summer />} />
+
         <Route
           path="/my-cart"
           element={

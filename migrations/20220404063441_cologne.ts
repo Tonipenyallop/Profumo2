@@ -1,11 +1,8 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.up = function (knex) {
-  return knex.schema.createTable("cologne", (table) => {
-    table.increments();
+import { Knex } from "knex";
 
+export async function up(knex: Knex): Promise<void> {
+  return knex.schema.createTable("top", (table) => {
+    table.increments();
     table.string("name").notNullable();
     table.string("url").notNullable();
     table.text("description").notNullable();
@@ -15,12 +12,8 @@ exports.up = function (knex) {
     table.json("seasons").notNullable();
     table.integer("quantity").notNullable();
   });
-};
+}
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.down = function (knex) {
-  return knex.schema.dropTable("cologne");
-};
+export async function down(knex: Knex): Promise<void> {
+  return knex.schema.dropTable("top");
+}

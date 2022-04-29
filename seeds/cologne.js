@@ -4,8 +4,8 @@
  */
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
-  await knex("cologne").del();
-  await knex("cologne").insert([
+  await knex("top").del();
+  await knex("top").insert([
     {
       name: "Naxos",
       price: 180,
