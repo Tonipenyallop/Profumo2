@@ -53,12 +53,10 @@ export default function AddToCart({
     );
   }
 
+  // for after refreshing page and not setting empty object to local storage
   useEffect(() => {
     const localCart: any = window.localStorage.getItem("cart");
-    // const localItems: any = window.localStorage.getItem("items");
-    // const localQuantity = window.localStorage.getItem('totalQuantity');
     localCart && setTempCart(JSON.parse(localCart));
-    // setAllItems(JSON.parse(localItems));
   }, []);
 
   useEffect(() => {

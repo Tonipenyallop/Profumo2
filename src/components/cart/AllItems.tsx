@@ -43,33 +43,31 @@ export default function AllItems({
       getTotalQuantity(tempCart).toString()
     );
     // for removing items from local storage
-    items[name] = undefined;
+    cart[name] = undefined;
 
-    window.localStorage.setItem("items", JSON.stringify(items));
-    // for removing cart item form local storage
     window.localStorage.setItem("cart", JSON.stringify(tempCart));
   }
 
-  let items: any = window.localStorage.getItem("items");
-  items = JSON.parse(items);
+  let cart: any = window.localStorage.getItem("cart");
+  cart = JSON.parse(cart);
   const keys: any = [];
-  for (let key in items) {
+  for (let key in cart) {
     keys.push(key);
   }
-
+  console.log(cart);
   function getQuantity(name: string): string {
     const cart: any = window.localStorage.getItem("cart");
     const parsedCart = JSON.parse(cart);
-    const quantity = parsedCart[name];
+    const quantity = parsedCart[name].quantity;
     return quantity;
   }
 
   function addQuantity(name: string): void {
     let temp = tempCart;
-    const quantity = temp[name] + 1;
+    const quantity = temp[name].quantity + 1;
     if (quantity > 10) return;
 
-    temp[name] = quantity;
+    temp[name].quantity = quantity;
 
     window.localStorage.setItem("cart", JSON.stringify(temp));
     setTempCart(temp);
@@ -77,9 +75,9 @@ export default function AllItems({
   }
   function decreaseQuantity(name: string): void {
     let temp = tempCart;
-    const quantity = temp[name] - 1;
+    const quantity = temp[name].quantity - 1;
     if (quantity <= 0) return;
-    temp[name] = quantity;
+    temp[name].quantity = quantity;
     window.localStorage.setItem("cart", JSON.stringify(temp));
     setTempCart(temp);
     setAddFlag(!addFlag);
@@ -100,11 +98,11 @@ export default function AllItems({
           >
             <img
               className="flex w-[100px] bg-white"
-              src={`${items[`${e}`].url}`}
+              src={`${cart[`${e}`].url}`}
               alt=""
             />
             <div className="flex name text-white break-words mx-3">
-              {items[`${e}`].name}
+              {cart[`${e}`].name}
             </div>
             <div className="flex items-center ">
               <div className="flex items-center">
@@ -120,7 +118,7 @@ export default function AllItems({
                 </button>
               </div>
 
-              <div className="flex text-white mx-3">{items[`${e}`].price}</div>
+              <div className="flex text-white mx-3">{cart[`${e}`].price}</div>
               <button className="button" onClick={() => removeItem(e)}>
                 X
               </button>
