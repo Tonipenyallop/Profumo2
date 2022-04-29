@@ -21,20 +21,28 @@ export default function AddToCart({
     const chosenElement = getElement(idx);
     setChosenItem(chosenElement);
     const nameOfBottle = getChosenItemName(chosenElement);
+    const url = getChosenItemImage(chosenElement);
+    const price = getChosenItemPrice(chosenElement);
     let temp = tempCart;
 
-    if (!temp[`${nameOfBottle}`]) temp[`${nameOfBottle}`] = 1;
-    else if (temp[`${nameOfBottle}`] < 10) temp[`${nameOfBottle}`] += 1;
+    if (!temp[`${nameOfBottle}`]) {
+      temp[`${nameOfBottle}`] = {};
+      temp[`${nameOfBottle}`].quantity = 1;
+      temp[`${nameOfBottle}`].name = nameOfBottle;
+      temp[`${nameOfBottle}`].url = url;
+      temp[`${nameOfBottle}`].price = price;
+    } else if (temp[`${nameOfBottle}`].quantity < 10)
+      temp[`${nameOfBottle}`].quantity += 1;
     else {
       console.log("u cannot add item anymore");
       return;
     }
     setVisibleCart(true);
     setTempCart(temp);
+    console.log(tempCart);
     // for setting cart in local storage
     window.localStorage.setItem("cart", JSON.stringify(tempCart));
     const allItemsSoFar = allItems;
-
     // for removing duplicated items on my cart
     const isFirstTimeAdded = isMoreThanTwo(chosenElement, tempCart);
     if (isFirstTimeAdded) setAllItems([...allItemsSoFar, chosenElement]);
@@ -44,6 +52,14 @@ export default function AddToCart({
       getTotalQuantity(tempCart).toString()
     );
   }
+
+  useEffect(() => {
+    const localCart: any = window.localStorage.getItem("cart");
+    // const localItems: any = window.localStorage.getItem("items");
+    // const localQuantity = window.localStorage.getItem('totalQuantity');
+    localCart && setTempCart(JSON.parse(localCart));
+    // setAllItems(JSON.parse(localItems));
+  }, []);
 
   useEffect(() => {
     let obj: any = {};
@@ -56,25 +72,16 @@ export default function AddToCart({
       obj[`${name}`].name = name;
       obj[`${name}`].url = url;
       obj[`${name}`].price = price;
-      // if (bbb[name]?.quantity >= 1) {
-      //   console.log("inside of it ");
-      //   const tttt = obj[`${name}`].quantity;
-      //   console.log("ssss", tttt);
-      // } else {
-      //   console.log("out sise jiajcnoae");
-      //   obj[`${name}`].quantity = 1;
-      //   console.log(obj[`${name}`].quantity);
-      //   //  obj[`${name}`].quantity =
-      // }
-    }
 
-    window.localStorage.setItem("items", JSON.stringify(obj));
+      window.localStorage.setItem("items", JSON.stringify(obj));
+    }
   }, [allItems]);
+  // gotta fix this one
 
   return (
     <div className="flex justify-center items-center">
       <button
-        className="button "
+        className="button disable"
         onClick={(): void => {
           addToCart();
         }}

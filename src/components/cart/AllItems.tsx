@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   getElement,
   getChosenItemImage,
@@ -13,13 +13,26 @@ export default function AllItems({
   setTempCart,
 }: any) {
   const [addFlag, setAddFlag] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   const totalQuantity: any = window.localStorage.getItem("totalQuantity");
+  //   const parseDTotalQuantity = JSON.parse(totalQuantity);
+  //   const items: any = window.localStorage.getItem("items");
+  //   for (let key in items) {
+  //     keys.push(key);
+  //   }
+  //   console.log(parseDTotalQuantity);
+  //   console.log(items);
+  //   console.log(keys);
+  // });
+
   function removeItem(name: string): void {
     const filteredItem = allItems.filter(
       (e: any) => name !== getChosenItemName(e)
     );
     setAllItems(filteredItem);
 
-    // for setting quantity for each items
+    // for removing quantity of a chosen item
     const temp = tempCart;
     temp[`${name}`] = 0;
     setTempCart(temp);
@@ -31,6 +44,7 @@ export default function AllItems({
     );
     // for removing items from local storage
     items[name] = undefined;
+
     window.localStorage.setItem("items", JSON.stringify(items));
     // for removing cart item form local storage
     window.localStorage.setItem("cart", JSON.stringify(tempCart));
@@ -56,6 +70,7 @@ export default function AllItems({
     if (quantity > 10) return;
 
     temp[name] = quantity;
+
     window.localStorage.setItem("cart", JSON.stringify(temp));
     setTempCart(temp);
     setAddFlag(!addFlag);
@@ -69,7 +84,6 @@ export default function AllItems({
     setTempCart(temp);
     setAddFlag(!addFlag);
   }
-
   return (
     <div className="px-5">
       {keys?.length === 0 ? (

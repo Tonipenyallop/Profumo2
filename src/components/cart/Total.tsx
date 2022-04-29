@@ -6,6 +6,7 @@ import {
 } from "../../app/gettingFunctions";
 export default function Total({ allItems, tempCart }: any) {
   const [totalFlag, setTotalFlag] = useState<boolean>(false);
+
   useEffect(() => {
     getTotal();
     setTotalFlag(!totalFlag);
