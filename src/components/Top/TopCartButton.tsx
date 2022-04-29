@@ -6,8 +6,13 @@ export default function TopCartButton() {
   const navigate = useNavigate();
 
   function getQuantity(): string | null {
-    let quantity = window.localStorage.getItem("totalQuantity");
-    return quantity === "0" ? "" : quantity;
+    const cart: any = window.localStorage.getItem("cart");
+    const parsedCart = JSON.parse(cart);
+    let total = 0;
+    for (let key in parsedCart) {
+      total += parsedCart[key].quantity;
+    }
+    return total === 0 ? "" : total.toString();
   }
   return (
     <div className=" fixed top-0 right-0 z-10">

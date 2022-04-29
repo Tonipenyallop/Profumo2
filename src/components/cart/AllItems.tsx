@@ -38,10 +38,10 @@ export default function AllItems({
     setTempCart(temp);
 
     // to decrease item quantity
-    window.localStorage.setItem(
-      "totalQuantity",
-      getTotalQuantity(tempCart).toString()
-    );
+    // window.localStorage.setItem(
+    //   "totalQuantity",
+    //   getTotalQuantity(tempCart).toString()
+    // );
     // for removing items from local storage
     cart[name] = undefined;
 
