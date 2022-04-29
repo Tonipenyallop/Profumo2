@@ -34,14 +34,9 @@ export default function AllItems({
 
     // for removing quantity of a chosen item
     const temp = tempCart;
-    temp[`${name}`] = 0;
+    temp[`${name}`] = undefined;
     setTempCart(temp);
 
-    // to decrease item quantity
-    // window.localStorage.setItem(
-    //   "totalQuantity",
-    //   getTotalQuantity(tempCart).toString()
-    // );
     // for removing items from local storage
     cart[name] = undefined;
 
@@ -54,7 +49,7 @@ export default function AllItems({
   for (let key in cart) {
     keys.push(key);
   }
-  console.log(cart);
+  console.log(keys);
   function getQuantity(name: string): string {
     const cart: any = window.localStorage.getItem("cart");
     const parsedCart = JSON.parse(cart);
