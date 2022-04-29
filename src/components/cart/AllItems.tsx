@@ -4,7 +4,6 @@ import {
   getChosenItemImage,
   getChosenItemPrice,
   getChosenItemName,
-  getTotalQuantity,
 } from "../../app/gettingFunctions";
 export default function AllItems({
   allItems,
@@ -13,18 +12,6 @@ export default function AllItems({
   setTempCart,
 }: any) {
   const [addFlag, setAddFlag] = useState<boolean>(false);
-
-  // useEffect(() => {
-  //   const totalQuantity: any = window.localStorage.getItem("totalQuantity");
-  //   const parseDTotalQuantity = JSON.parse(totalQuantity);
-  //   const items: any = window.localStorage.getItem("items");
-  //   for (let key in items) {
-  //     keys.push(key);
-  //   }
-  //   console.log(parseDTotalQuantity);
-  //   console.log(items);
-  //   console.log(keys);
-  // });
 
   function removeItem(name: string): void {
     const filteredItem = allItems.filter(
@@ -49,7 +36,7 @@ export default function AllItems({
   for (let key in cart) {
     keys.push(key);
   }
-  console.log(keys);
+
   function getQuantity(name: string): string {
     const cart: any = window.localStorage.getItem("cart");
     const parsedCart = JSON.parse(cart);
@@ -87,7 +74,7 @@ export default function AllItems({
       {keys.map((e: any, idx: number) => {
         return (
           <div
-            className=" border-2 border-green-300 flex justify-between items-center"
+            className=" border-b-2 border-r-2 flex justify-between items-center"
             key={`${idx}`}
             id={`${idx}`}
           >

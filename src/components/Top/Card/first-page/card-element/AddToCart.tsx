@@ -3,7 +3,6 @@ import {
   getElement,
   getChosenItemName,
   isMoreThanTwo,
-  getTotalQuantity,
   getChosenItemImage,
   getChosenItemPrice,
 } from "../../../../../app/gettingFunctions";
@@ -39,18 +38,13 @@ export default function AddToCart({
     }
     setVisibleCart(true);
     setTempCart(temp);
-    console.log(tempCart);
+
     // for setting cart in local storage
     window.localStorage.setItem("cart", JSON.stringify(tempCart));
     const allItemsSoFar = allItems;
     // for removing duplicated items on my cart
     const isFirstTimeAdded = isMoreThanTwo(chosenElement, tempCart);
     if (isFirstTimeAdded) setAllItems([...allItemsSoFar, chosenElement]);
-
-    window.localStorage.setItem(
-      "totalQuantity",
-      getTotalQuantity(tempCart).toString()
-    );
   }
 
   // for after refreshing page and not setting empty object to local storage
