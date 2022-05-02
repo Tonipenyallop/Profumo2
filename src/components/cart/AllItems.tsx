@@ -80,7 +80,7 @@ export default function AllItems({
               src={`${cart[`${e}`].url}`}
               alt=""
             />
-            <div className="flex name text-white break-words mx-3">
+            <div className="flex name  break-words mx-3">
               {cart[`${e}`].name}
             </div>
             <div className="flex items-center ">
@@ -91,13 +91,13 @@ export default function AllItems({
                 >
                   -
                 </button>
-                <div className="flex text-white">{getQuantity(e)}</div>
+                <div className="flex ">{getQuantity(e)}</div>
                 <button className="flex button" onClick={() => addQuantity(e)}>
                   +
                 </button>
               </div>
 
-              <div className="flex text-white mx-3">{cart[`${e}`].price}</div>
+              <div className="flex  mx-3">{cart[`${e}`].price}</div>
               <button className="button" onClick={() => removeItem(e)}>
                 X
               </button>
