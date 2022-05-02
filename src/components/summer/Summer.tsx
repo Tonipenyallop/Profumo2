@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cart from "../Card/Cart";
-import TopProfumoIcon from "../Card/TopProfumoIcon";
+import TopProfumoIcon from "../home/TopProfumoIcon";
 import TopCartButton from "../Card/TopCartButton";
 import Card from "../Card/Card";
 

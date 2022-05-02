@@ -11,10 +11,7 @@ export default function Home() {
     navigate("/");
   };
   return (
-    <div className="bg-black">
-      <MenuBar />
-      {/* <Count /> */}
-      <div className="flex justify-center items-center "></div>
+    <div className="absolute bg-black top-[135px]">
       <div className="flex flex-col justify-center items-center">
         <HomeTop />
         <div className="flex">

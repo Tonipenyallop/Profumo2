@@ -4,7 +4,7 @@ import axios from "axios";
 import Card from "../Card/Card";
 import Cart from "../Card/Cart";
 import TopCartButton from "../Card/TopCartButton";
-import TopProfumoIcon from "../Card/TopProfumoIcon";
+import TopProfumoIcon from "../home/TopProfumoIcon";
 
 export default function Top({
   allItems,

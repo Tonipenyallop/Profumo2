@@ -6,6 +6,7 @@ import "../input.css";
 import Top from "./Top/Top";
 import MyCart from "./cart/MyCart";
 import Summer from "./summer/Summer";
+import MenuBar from "./home/MenuBar";
 function App() {
   const [allItems, setAllItems] = useState<any>([]);
   const [chosenItem, setChosenItem] = useState<any>(false);
@@ -14,7 +15,7 @@ function App() {
   return (
     <div className="bg-blue-300">
       <div className="fixed top-0 flex justify-center items-center border-2 w-full z-10">
-        <div className="flex text-white ">HERE TO BE MENUBAR</div>
+        <MenuBar />
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
