@@ -24,10 +24,7 @@ export default function MenuBar() {
           <p className="menubar-text" onClick={() => navigate("/summer")}>
             Top 5 In Summer
           </p>
-          <p
-            className="menubar-text"
-            onClick={() => console.log("nothing happened yet")}
-          >
+          <p className="menubar-text" onClick={() => navigate("/winter")}>
             Top 5 In Winter
           </p>
         </div>

@@ -7,7 +7,7 @@ export default function HomeWinter() {
   return (
     <div
       className="relative hover:scale-105 duration-1000 transition-all cursor-pointer"
-      onClick={() => navigate("/top")}
+      onClick={() => navigate("/winter")}
     >
       <img
         className="h-[100%]"
