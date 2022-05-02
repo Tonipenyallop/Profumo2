@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from "react";
-import {
-  getElement,
-  getChosenItemImage,
-  getChosenItemPrice,
-  getChosenItemName,
-} from "../../app/gettingFunctions";
+import React, { useState } from "react";
+import { getChosenItemName } from "../../app/gettingFunctions";
 export default function AllItems({
   allItems,
   setAllItems,
@@ -45,23 +40,25 @@ export default function AllItems({
   }
 
   function addQuantity(name: string): void {
-    let temp = tempCart;
-    const quantity = temp[name].quantity + 1;
+    const cart: any = window.localStorage.getItem("cart");
+    const parsedCart = JSON.parse(cart);
+    const quantity = parsedCart[name].quantity + 1;
     if (quantity > 10) return;
 
-    temp[name].quantity = quantity;
+    parsedCart[name].quantity = quantity;
 
-    window.localStorage.setItem("cart", JSON.stringify(temp));
-    setTempCart(temp);
+    window.localStorage.setItem("cart", JSON.stringify(parsedCart));
+    setTempCart(parsedCart);
     setAddFlag(!addFlag);
   }
   function decreaseQuantity(name: string): void {
-    let temp = tempCart;
-    const quantity = temp[name].quantity - 1;
+    const cart: any = window.localStorage.getItem("cart");
+    const parsedCart = JSON.parse(cart);
+    const quantity = parsedCart[name].quantity - 1;
     if (quantity <= 0) return;
-    temp[name].quantity = quantity;
-    window.localStorage.setItem("cart", JSON.stringify(temp));
-    setTempCart(temp);
+    parsedCart[name].quantity = quantity;
+    window.localStorage.setItem("cart", JSON.stringify(parsedCart));
+    setTempCart(parsedCart);
     setAddFlag(!addFlag);
   }
   return (
