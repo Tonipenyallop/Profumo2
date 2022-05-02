@@ -5,7 +5,10 @@ export default function HomeSummer() {
   const navigate = useNavigate();
 
   return (
-    <div className="relative hover:scale-105 duration-1000 transition-all">
+    <div
+      className="relative hover:scale-105 duration-1000 transition-all cursor-pointer"
+      onClick={() => navigate("/summer")}
+    >
       <img
         className="h-[100%] "
         src={require("../../images/summer.jpeg")}
@@ -13,10 +16,7 @@ export default function HomeSummer() {
       />
       <div className="absolute top-[10px] mx-5 my-2">
         <p className="flex text-white text-sm">VIEW NOW </p>
-        <p className="flex text-white text-3xl">Summer Summer Summer</p>
-        <button className="flex button" onClick={() => navigate("/summer")}>
-          To Summer Page
-        </button>
+        <p className="flex text-white text-3xl">Best Summer Cologne</p>
       </div>
     </div>
   );
