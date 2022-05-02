@@ -34,7 +34,7 @@ export default function Cart({ visibleCart, setVisibleCart, chosenItem }: any) {
       >
         <div className="flex mt-3 justify-around items-center  ">
           <img
-            className="w-[100px] h-[100px] bg-white "
+            className="w-[85px] h-[100px] bg-white "
             src={getChosenItemImage(chosenItem)}
             alt=""
           />
