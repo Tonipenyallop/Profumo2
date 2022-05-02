@@ -11,7 +11,7 @@ export default function Card({
 }: any) {
   return (
     <div className="relative preserve-3d">
-      <div className="flex">
+      <div className="flex mt-24">
         <FirstPageCard
           top={top}
           setChosenItem={setChosenItem}
