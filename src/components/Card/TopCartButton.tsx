@@ -15,7 +15,7 @@ export default function TopCartButton() {
     return total === 0 ? "" : total.toString();
   }
   return (
-    <div className=" fixed top-0 right-0 z-10">
+    <div className=" fixed top-[25px] right-0 z-10">
       <div className="relative ">
         <div className="absolute text-center w-[25px] top-2 right-4 rounded-3xl bg-white text-black">
           {getQuantity()}

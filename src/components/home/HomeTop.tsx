@@ -10,7 +10,7 @@ export default function HomeTop() {
       <img src={require("../../images/applying-cologne.webp")} alt="" />
       <div className="absolute bottom-[10px] mx-4 px-4">
         <p className="flex text-white text-sm">VIEW NOW </p>
-        <p className="flex text-white text-3xl mb-3">Top Seller of All Time</p>
+        <p className="flex text-white text-3xl mb-5">Top Seller of All Time</p>
       </div>
     </div>
   );

@@ -12,6 +12,9 @@
   .seasons {
     @apply flex text-white justify-start;
   }
+  .menubar-text {
+    @apply text-gray-400 mx-3 my-3 py-5 text-3xl cursor-pointer hover:text-white transition-all duration-300;
+  }
 }
 
 /* .bg-img {

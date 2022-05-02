@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="bg-blue-300">
-      <div className="fixed top-0 flex justify-center items-center border-2 w-full z-10">
+      <div className="fixed top-0 flex justify-center items-center w-full z-10">
         <MenuBar />
       </div>
       <Routes>

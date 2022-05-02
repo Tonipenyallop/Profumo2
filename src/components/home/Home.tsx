@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import TopCartButton from "../Card/TopCartButton";
 import Count from "./Count";
 import HomeSummer from "./HomeSummer";
 import HomeTop from "./HomeTop";
@@ -11,7 +12,8 @@ export default function Home() {
     navigate("/");
   };
   return (
-    <div className="absolute bg-black top-[135px]">
+    <div className="absolute bg-black top-[120px]">
+      <TopCartButton />
       <div className="flex flex-col justify-center items-center">
         <HomeTop />
         <div className="flex">

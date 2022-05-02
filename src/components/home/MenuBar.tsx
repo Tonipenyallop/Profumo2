@@ -6,26 +6,30 @@ export default function MenuBar() {
   const navigate = useNavigate();
 
   return (
-    <div className="py-5">
+    <div className="py-5 bg-black w-full">
       <div className="flex justify-center items-center">
-        <TopProfumoIcon />
-        <div className="flex justify-center items-center">
-          <button
-            className="button"
-            value="top"
-            onClick={() => navigate("/top")}
+        <div className="relative mx-3 py-5">
+          <p
+            className="text-white text-5xl cursor-pointer"
+            onClick={() => navigate("/")}
           >
-            Top 5
-          </button>
-          <button className="button" onClick={() => navigate("/summer")}>
+            PROFUMO
+          </p>
+        </div>
+
+        <div className="flex justify-center items-center">
+          <p className="menubar-text" onClick={() => navigate("/top")}>
+            Top Seller 2022
+          </p>
+          <p className="menubar-text" onClick={() => navigate("/summer")}>
             Top 5 In Summer
-          </button>
-          <button
-            className="button"
+          </p>
+          <p
+            className="menubar-text"
             onClick={() => console.log("nothing happened yet")}
           >
             Top 5 In Winter
-          </button>
+          </p>
         </div>
       </div>
     </div>
