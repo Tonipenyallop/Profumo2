@@ -9,14 +9,17 @@ export default function MyCart({
   setTempCart,
 }: any) {
   return (
-    <div className="bg-black absolute top-[135px] w-full h-full">
-      <div className="flex justify-center items-center flex-wrap my-5">
-        <AllItems
-          allItems={allItems}
-          setAllItems={setAllItems}
-          tempCart={tempCart}
-          setTempCart={setTempCart}
-        />
+    <div className="bg-black ">
+      <div className="flex justify-center items-center flex-wrap mt-32 pb-5">
+        <div className="flex ">
+          <AllItems
+            allItems={allItems}
+            setAllItems={setAllItems}
+            tempCart={tempCart}
+            setTempCart={setTempCart}
+          />
+        </div>
+
         <Total allItems={allItems} tempCart={tempCart} />
       </div>
     </div>
