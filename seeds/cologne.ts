@@ -1,11 +1,11 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.seed = async function (knex) {
+import { Knex } from "knex";
+
+export async function seed(knex: Knex): Promise<void> {
   // Deletes ALL existing entries
-  await knex("top").del();
-  await knex("top").insert([
+  await knex("summer").del();
+
+  // Inserts seed entries
+  await knex("summer").insert([
     {
       name: "Naxos",
       price: 180,
@@ -69,4 +69,4 @@ exports.seed = async function (knex) {
       url: "https://i.pinimg.com/originals/0a/b4/f8/0ab4f85e6be8314cef5900356135c585.png",
     },
   ]);
-};
+}

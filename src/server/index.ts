@@ -12,4 +12,9 @@ app.get("/all", async (_: Request, res: Response) => {
   const all = await db.select("*").from("top");
   res.send(all);
 });
+
+app.get("/summer-all", async (_: Request, res: Response) => {
+  const all = await db.select("*").from("summer");
+  res.send(all);
+});
 app.listen(PORT, () => console.log(`Listing PORT ${PORT}`));

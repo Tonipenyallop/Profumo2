@@ -79,7 +79,7 @@ export default function AllItems({
             id={`${idx}`}
           >
             <img
-              className="flex w-[100px] bg-white"
+              className="flex w-[100px] max-h-[125px] bg-white"
               src={`${cart[`${e}`].url}`}
               alt=""
             />

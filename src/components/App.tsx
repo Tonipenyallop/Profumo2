@@ -5,7 +5,7 @@ import Home from "./home/Home";
 import "../input.css";
 import Top from "./Top/Top";
 import MyCart from "./cart/MyCart";
-import Summer from "./Summer";
+import Summer from "./summer/Summer";
 function App() {
   const [allItems, setAllItems] = useState<any>([]);
   const [chosenItem, setChosenItem] = useState<any>(false);
@@ -28,7 +28,19 @@ function App() {
             />
           }
         />
-        <Route path="/summer" element={<Summer />} />
+        <Route
+          path="/summer"
+          element={
+            <Summer
+              allItems={allItems}
+              setAllItems={setAllItems}
+              chosenItem={chosenItem}
+              setChosenItem={setChosenItem}
+              tempCart={tempCart}
+              setTempCart={setTempCart}
+            />
+          }
+        />
 
         <Route
           path="/my-cart"

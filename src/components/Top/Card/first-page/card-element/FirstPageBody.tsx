@@ -7,8 +7,8 @@ export default function FirstPageBody({
   price,
 }: any) {
   return (
-    <div className="flex flex-col">
-      <img className="max-h-[450px] " src={url} alt="" />
+    <div className="flex flex-col justify-center border-4 items-center ">
+      <img className="max-h-[450px] max-w-[400px] " src={url} alt="" />
       {/* <div className="flex  items-center justify-center text-white">
         {concentration}
       </div>

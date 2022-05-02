@@ -14,6 +14,7 @@ export default function FirstPageCard({
   tempCart,
   setTempCart,
 }: any) {
+  console.log(top);
   return (
     <div
       className="relative flex flex-wrap justify-around items-center"
