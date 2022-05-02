@@ -10,7 +10,7 @@ export default function MyCart({
 }: any) {
   return (
     <div className="bg-black ">
-      <div className="flex justify-center items-center flex-wrap mt-32 pb-5">
+      <div className="flex justify-evenly items-start flex-wrap mt-32 pb-5">
         <div className="flex ">
           <AllItems
             allItems={allItems}
