@@ -6,7 +6,7 @@ export default function TopProfumoIcon() {
   return (
     <img
       className="z-10  bg-white w-[50px] cursor-pointer"
-      src={require("../../../images/cologne-icon.webp")}
+      src={require("../../images/cologne-icon.webp")}
       alt=""
       onClick={() => navigate("/")}
     />

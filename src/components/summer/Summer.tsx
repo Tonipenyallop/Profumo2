@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Cart from "../Top/Cart";
-import TopProfumoIcon from "../Top/Card/TopProfumoIcon";
-import TopCartButton from "../Top/TopCartButton";
-import Card from "../Top/Card/Card";
+import Cart from "../Card/Cart";
+import TopProfumoIcon from "../Card/TopProfumoIcon";
+import TopCartButton from "../Card/TopCartButton";
+import Card from "../Card/Card";
 
 export default function Summer({
   allItems,

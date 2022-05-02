@@ -1,5 +1,5 @@
 import React from "react";
-import { getElement } from "../../../../../app/gettingFunctions";
+import { getElement } from "../../../../app/gettingFunctions";
 import SeasonData from "./SeasonData";
 import Stars from "./Stars";
 

@@ -10,6 +10,7 @@ app.use(express.static(__dirname + "/build"));
 
 app.get("/all", async (_: Request, res: Response) => {
   const all = await db.select("*").from("top");
+  console.log(all);
   res.send(all);
 });
 

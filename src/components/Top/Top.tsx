@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
-import Card from "./Card/Card";
-import Cart from "./Cart";
-import TopCartButton from "./TopCartButton";
-import TopProfumoIcon from "./Card/TopProfumoIcon";
+import Card from "../Card/Card";
+import Cart from "../Card/Cart";
+import TopCartButton from "../Card/TopCartButton";
+import TopProfumoIcon from "../Card/TopProfumoIcon";
 
 export default function Top({
   allItems,
@@ -17,9 +17,10 @@ export default function Top({
   const [visibleCart, setVisibleCart] = useState<boolean>(false);
   const [top, setTop] = useState<any>([]);
 
-  async function getAllTop() {
+  async function getAllTop(): Promise<void> {
     const res = await axios.get("/all");
     const data = res.data;
+    console.log(data);
     setTop(data);
   }
 

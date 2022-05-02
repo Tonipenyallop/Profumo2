@@ -5,7 +5,7 @@ import {
   isMoreThanTwo,
   getChosenItemImage,
   getChosenItemPrice,
-} from "../../../../../app/gettingFunctions";
+} from "../../../../app/gettingFunctions";
 
 export default function AddToCart({
   idx,

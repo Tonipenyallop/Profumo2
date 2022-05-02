@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Icon from "./Card/Icon";
+import Icon from "./Icon";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 export default function TopCartButton() {
   const navigate = useNavigate();
