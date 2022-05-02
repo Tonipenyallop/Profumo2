@@ -4,7 +4,10 @@
 
 @layer components {
   .button {
-    @apply bg-transparent mx-3 my-3 py-3 px-3 border-2 border-white transition-all duration-300 hover:bg-gray-50 hover:text-black hover:rounded-2xl text-white;
+    @apply mx-3 my-3 py-3 px-3 border-2 border-black transition-all duration-300 hover:text-white hover:bg-black hover:rounded-xl;
+  }
+  .white-button {
+    @apply mx-3 my-3 py-3 px-3 border-2 border-white transition-all duration-300 bg-transparent text-white hover:bg-white hover:text-black hover:rounded-xl;
   }
   .description {
     @apply flex items-center justify-center break-words max-w-xs  transition-all  duration-1000 overflow-scroll bg-yellow-300;

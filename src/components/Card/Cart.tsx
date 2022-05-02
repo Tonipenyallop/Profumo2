@@ -45,7 +45,7 @@ export default function Cart({ visibleCart, setVisibleCart, chosenItem }: any) {
             </div>
           </div>
           <button
-            className="button"
+            className="white-button"
             onClick={() => {
               setVisibleCart(false);
             }}
@@ -54,7 +54,7 @@ export default function Cart({ visibleCart, setVisibleCart, chosenItem }: any) {
           </button>
         </div>
         <div className="flex justify-center items-center">
-          <button className="button" onClick={() => navigate("/my-cart")}>
+          <button className="white-button" onClick={() => navigate("/my-cart")}>
             View My Cart
           </button>
         </div>

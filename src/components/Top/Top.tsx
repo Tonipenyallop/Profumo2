@@ -29,7 +29,7 @@ export default function Top({
   }, []);
 
   return (
-    <div className="bg-black">
+    <div className="">
       <Cart
         visibleCart={visibleCart}
         setVisibleCart={setVisibleCart}

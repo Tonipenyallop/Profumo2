@@ -14,7 +14,7 @@ function App() {
   const [tempCart, setTempCart] = useState<any>({});
 
   return (
-    <div className="bg-blue-300">
+    <div className="">
       <div className="fixed top-0 flex justify-center items-center w-full z-10">
         <MenuBar />
       </div>

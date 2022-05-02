@@ -24,7 +24,7 @@ export default function Winter({
     getWinterAll();
   }, []);
   return (
-    <div className="text-white bg-black ">
+    <div className=" ">
       <Cart
         visibleCart={visibleCart}
         setVisibleCart={setVisibleCart}

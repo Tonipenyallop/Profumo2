@@ -8,9 +8,14 @@ export default function Stars({ number }: any) {
     return new Array(number).fill(0);
   }
   return (
-    <div className="flex text-white">
+    <div className="flex ">
       {arrayMaker().map((e: number, idx: number) => {
-        return <Icon key={`${idx}`} icon={<AiOutlineStar size="24" />} />;
+        return (
+          <Icon
+            key={`${idx}`}
+            icon={<AiOutlineStar size="24" color="black" />}
+          />
+        );
       })}
     </div>
   );

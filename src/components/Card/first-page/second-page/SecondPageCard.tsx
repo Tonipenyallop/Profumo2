@@ -27,14 +27,12 @@ export default function SecondPageCard({
     // backface-hidden
     <div className="absolute card-flip-180 backface-hidden top-0 w-full h-full ">
       <div className="flex flex-col items-center">
-        <div className="flex flex-col flex-wrap   text-white">
-          {concentration}
-        </div>
-        <div className="flex   text-white">{size}</div>
-        <div className="mx-3 my-3 text-white break-words">{description}</div>
+        <div className="flex flex-col flex-wrap ">{concentration}</div>
+        <div className="flex ">{size}</div>
+        <div className="mx-3 my-3 break-words">{description}</div>
 
         <div className="flex justify-center items-center ">
-          <div className="flex flex-col  items-start w-full">
+          <div className="flex flex-col items-start w-full">
             {seasonName.map((e: string, index: number) => {
               return (
                 <SeasonData
@@ -47,7 +45,7 @@ export default function SecondPageCard({
           </div>
         </div>
         <button
-          className="button   w-full"
+          className="button w-full"
           onClick={() => {
             addToCart();
           }}
