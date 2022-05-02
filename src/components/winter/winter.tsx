@@ -17,7 +17,6 @@ export default function Winter({
   const [winterTopFive, setWinterTopFive] = useState<any>([]);
   async function getWinterAll(): Promise<void> {
     const res = await axios.get("winter-all");
-    console.log(res.data);
     setWinterTopFive(res.data);
   }
   useEffect(() => {

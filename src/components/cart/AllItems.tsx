@@ -62,9 +62,11 @@ export default function AllItems({
     setAddFlag(!addFlag);
   }
   return (
-    <div className="px-5">
+    <div className="px-5 ">
       {keys?.length === 0 ? (
-        <div className="text-white text-center">No items are added yet!</div>
+        <div className="text-center w-screen top-[100px] relative ">
+          <div className="text-lg">No items are added yet!</div>
+        </div>
       ) : (
         <div className=""></div>
       )}

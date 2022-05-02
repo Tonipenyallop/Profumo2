@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {
   getChosenItemPrice,
@@ -39,12 +40,20 @@ export default function Total({ allItems, tempCart }: any) {
 
           <div className="flex my-10">TOTAL - €{getTotal()} </div>
 
-          <button
+          <form action="/create-checkout-session" method="POST">
+            <button className="button" type="submit">
+              Checkout
+            </button>
+          </form>
+          {/* <button
             className="button"
-            onClick={() => console.log("checking out")}
+            onClick={() => {
+              console.log("click click");
+              axios.post("/create-checkout-session");
+            }}
           >
             Check out
-          </button>
+          </button> */}
         </div>
       )}
     </div>
