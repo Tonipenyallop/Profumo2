@@ -49,8 +49,14 @@ app.post("/create-checkout-session", async (req: Request, res: Response) => {
             currency: "eur",
             product_data: {
               name: e.name,
+              images: e.images,
             },
             unit_amount: parseInt(parsedCart[key].price.split("€")[1]) * 100,
+          },
+          adjustable_quantity: {
+            enabled: true,
+            minimum: 1,
+            maximum: 10,
           },
           quantity: parsedCart[key].quantity,
         };
