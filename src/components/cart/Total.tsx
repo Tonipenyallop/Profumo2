@@ -39,21 +39,16 @@ export default function Total({ allItems, tempCart }: any) {
           <div className="flex ">ORDER SUMMARY</div>
 
           <div className="flex my-10">TOTAL - €{getTotal()} </div>
-
-          <form action="/create-checkout-session" method="POST">
+          <form action={`/create-checkout-session`} method="POST">
+            <input
+              type="hidden"
+              name="cart"
+              value={`${JSON.stringify(cart)}`}
+            />
             <button className="button" type="submit">
               Checkout
             </button>
           </form>
-          {/* <button
-            className="button"
-            onClick={() => {
-              console.log("click click");
-              axios.post("/create-checkout-session");
-            }}
-          >
-            Check out
-          </button> */}
         </div>
       )}
     </div>
