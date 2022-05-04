@@ -74,4 +74,15 @@ app.post("/create-checkout-session", async (req: Request, res: Response) => {
   res.redirect(303, session.url);
 });
 
+// stripe.confirmCardPayment().then(function (response: any) {
+//   if (response.error) {
+//     // Handle error here
+//   } else if (
+//     response.paymentIntent &&
+//     response.paymentIntent.status === "succeeded"
+//   ) {
+//     // Handle successful payment here
+//   }
+// });
+
 app.listen(PORT, () => console.log(`Listing PORT ${PORT}`));

@@ -21,7 +21,7 @@ export default function TopCartButton() {
           {getQuantity()}
         </div>
         <button
-          className="white-button mx-6 my-5"
+          className="white-icon mx-6 my-5"
           onClick={() => navigate("/my-cart")}
         >
           <Icon icon={<AiOutlineShoppingCart size="24" />} />

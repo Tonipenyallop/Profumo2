@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Icon from "../Card/Icon";
 import TopProfumoIcon from "./TopProfumoIcon";
-
+import { HiOutlineUser } from "react-icons/hi";
 export default function MenuBar() {
   const navigate = useNavigate();
 
@@ -27,6 +28,12 @@ export default function MenuBar() {
           <p className="menubar-text" onClick={() => navigate("/winter")}>
             Top 5 In Winter
           </p>
+        </div>
+        <div
+          className="cursor-pointer white-icon"
+          onClick={() => navigate("/login")}
+        >
+          <Icon icon={<HiOutlineUser size="24" color="" />} />
         </div>
       </div>
     </div>
