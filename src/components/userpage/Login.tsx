@@ -23,24 +23,31 @@ export default function Login() {
   }
 
   async function signUp() {
-    if (!email || !password) {
+    if (!email || !password || !address || !username) {
       appearErrorMessage("up");
       setWarningMessage("Please fill out this form");
       return;
     }
 
-    const request = await axios.post("/sign-up", { email, password });
+    const request = await axios.post("/sign-up", {
+      email,
+      password,
+      address,
+      username,
+    });
     const response = request.data;
 
     if (response === "already user") {
       appearErrorMessage("up");
       setWarningMessage("Already have an account");
       return;
+    } else if (response === "success") {
+      console.log("success page or something to show");
     }
   }
 
   async function login() {
-    if (!email || !password || !address || !username) {
+    if (!email || !password) {
       appearErrorMessage("in");
       setWarningMessage("Please fill out this form");
       return;
@@ -48,12 +55,11 @@ export default function Login() {
     const login = await axios.post("/login", {
       email,
       password,
-      address,
-      username,
     });
     const response = login.data;
     if (response === "success") {
       window.localStorage.setItem("isLogin", "true");
+      //   navigate("/account");
       navigate("/user-page");
     } else {
       appearErrorMessage("in");
@@ -130,7 +136,7 @@ export default function Login() {
             className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500"
             type="text"
             placeholder="*Address"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setAddress(e.target.value)}
           />
 
           <button className="button my-5" onClick={signUp}>

@@ -81,7 +81,7 @@ function App() {
         />
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/account" element={<AccountPage />} />
-
+        <Route path="/user-page" element={<Userpage />} />
         <Route path="/success" element={<Success />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/cancel" element={<Cancel />} />
