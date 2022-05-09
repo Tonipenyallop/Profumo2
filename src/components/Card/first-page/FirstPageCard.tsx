@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardButtons from "./card-element/CardButtons";
 
 import FirstPageName from "./card-element/FirstPageName";
@@ -18,6 +18,25 @@ export default function FirstPageCard({
   setTempCart,
 }: any) {
   const [isChanged, setIsChanged] = useState<boolean>(false);
+
+  // for toggle heart when page was loaded
+  useEffect(() => {
+    const likesLocal: any = window.localStorage.getItem("liked");
+    const parsedLikes = JSON.parse(likesLocal);
+
+    for (let key in parsedLikes) {
+      top.map((e: any, idx: number) => {
+        const element = getElement(idx);
+        const name = getChosenItemName(element);
+        console.log(name === key);
+        if (key === name && parsedLikes[key].liked) {
+          const heart = document?.getElementsByClassName("heart")[idx];
+          heart.textContent = "♥";
+          heart.classList.add("text-3xl", "outline-none");
+        }
+      });
+    }
+  }, [top]);
 
   function toggleHeart(idx: number): void {
     let heart = document.getElementsByClassName("heart")[idx];
