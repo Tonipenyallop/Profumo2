@@ -29,12 +29,17 @@ export default function Userpage({ isLogin, setIsLogin }: any) {
 
   return (
     <div className="relative top-[150px]">
-      WELCOME MATE
-      <div className="">ORDER CONFIRMATION</div>
-      <div className="">
-        <p>FAVORITAS</p>
-        {getItemLists()}
+      <div className="flex justify-center border-red-500 border-4 ">
+        <div className="flex flex-col border-2 border-red-500  ">
+          <div className="">WELCOME MATE</div>
+          <div className="cursor-pointer">ORDER CONFIRMATION</div>
+          <p className="cursor-pointer">FAVORITAS</p>
+        </div>
+        <div className="relative border-8 flex justify-end">
+          <div className="flex flex-col">{getItemLists()}</div>
+        </div>
       </div>
+
       <button
         className="button"
         onClick={() => {
