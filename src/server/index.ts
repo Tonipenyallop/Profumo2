@@ -30,6 +30,15 @@ app.get("/winter-all", async (_: Request, res: Response) => {
   res.send(all);
 });
 
+app.post("/address", async (req: Request, res: Response) => {
+  let address = await db
+    .select("address")
+    .from("users")
+    .where("email", req.body.email);
+  address = address[0].address;
+  res.send(address);
+});
+
 app.post("/sign-up", async (req: Request, res: Response) => {
   try {
     const user = req.body;
@@ -39,7 +48,6 @@ app.post("/sign-up", async (req: Request, res: Response) => {
     isAlreadyUser = email.length >= 1 ? true : false;
 
     if (!isAlreadyUser) {
-      console.log(req.body);
       await db("users").insert(req.body);
       res.send("success").status(200);
     } else {

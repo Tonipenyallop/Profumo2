@@ -34,7 +34,6 @@ export default function FirstPageCard({
       top.map((e: any, idx: number) => {
         const element = getElement(idx);
         const name = getChosenItemName(element);
-        console.log(name === key);
         if (key === name && parsedLikes[key].liked) {
           const heart = document?.getElementsByClassName("heart")[idx];
           heart.textContent = "♥";

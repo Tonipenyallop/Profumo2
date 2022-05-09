@@ -10,7 +10,7 @@ export default function Userpage({ isLogin, setIsLogin }: any) {
     for (let key in parsedLocalLiked) {
       if (parsedLocalLiked[key].liked) {
         const item = (
-          <div className="border-4 flex justify-start items-center">
+          <div className="border-4 flex justify-start items-center" key={key}>
             <img
               className="w-[150px]"
               src={parsedLocalLiked[key].url}

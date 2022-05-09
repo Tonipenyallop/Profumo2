@@ -59,7 +59,7 @@ export default function Login() {
     const response = login.data;
     if (response === "success") {
       window.localStorage.setItem("isLogin", "true");
-      //   navigate("/account");
+      window.localStorage.setItem("email", email);
       navigate("/user-page");
     } else {
       appearErrorMessage("in");

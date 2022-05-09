@@ -1,7 +1,18 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Orders() {
   const navigate = useNavigate();
+  useEffect(() => {
+    getUserAddress();
+  }, []);
+  const [address, setAddress] = useState<string>("");
+  async function getUserAddress() {
+    const email: any = window.localStorage.getItem("email");
+
+    const response = await axios.post("/address", { email });
+    setAddress(response.data);
+  }
 
   function getOrderedItems(): any {
     const purchasedItem: any = window.localStorage.getItem("purchasedItem");
@@ -9,7 +20,7 @@ export default function Orders() {
     const arr = [];
     for (let key in parsedPurchasedItem) {
       const item = (
-        <div className="border-4 flex justify-start items-center">
+        <div className="border-4 flex justify-start items-center" key={key}>
           <img
             className="w-[150px]"
             src={parsedPurchasedItem[key]?.url}
@@ -47,7 +58,10 @@ export default function Orders() {
             <p className="font-bold">Payment</p>
             <div className="">Credit Card</div>
           </div>
-          <div className="border-4 ">Delivery address</div>
+          <div className="border-4 ">
+            <div className="font-bold">Delivery address</div>
+            <div className="">{address}</div>
+          </div>
           <div className="border-4 ">Email</div>
         </div>
         <div className="border-4 ">TOTAL €XXX</div>
