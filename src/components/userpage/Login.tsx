@@ -4,10 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [warningMessage, setWarningMessage] = useState<string>("");
+
   function appearErrorMessage(upOrIn: string): void {
     const warning = document.getElementById(`warning-sign-${upOrIn}`);
-    console.log(warning);
     warning?.classList.remove("opacity-0");
     warning?.classList.add("opacity-100");
     setTimeout(() => {
@@ -16,6 +18,7 @@ export default function Login() {
     }, 5000);
     return;
   }
+
   async function signUp() {
     if (!email || !password) {
       appearErrorMessage("up");
@@ -32,6 +35,7 @@ export default function Login() {
       return;
     }
   }
+
   async function login() {
     if (!email || !password) {
       appearErrorMessage("in");
@@ -40,12 +44,15 @@ export default function Login() {
     }
     const login = await axios.post("/login", { email, password });
     const response = login.data;
-    if (response === "success") navigate("/user-page");
-    else {
+    if (response === "success") {
+      window.localStorage.setItem("isLogin", "true");
+      navigate("/user-page");
+    } else {
       appearErrorMessage("in");
       setWarningMessage("Password or Email is wrong");
     }
   }
+
   function changeForm() {
     const createAccount = document.getElementById("sign-up");
     const signUpForm = document.getElementById("sign-up-form");
@@ -54,8 +61,7 @@ export default function Login() {
       signUpForm?.classList.remove("opacity-0", "pointer-events-none");
     }, 500);
   }
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+
   return (
     <div className="relative top-[145px]">
       <p className="text-center text-4xl my-3 ">YOUR ACCOUNT</p>

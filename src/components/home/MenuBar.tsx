@@ -31,7 +31,7 @@ export default function MenuBar() {
         </div>
         <div
           className="cursor-pointer white-icon"
-          onClick={() => navigate("/login")}
+          onClick={() => navigate("/account")}
         >
           <Icon icon={<HiOutlineUser size="24" color="" />} />
         </div>

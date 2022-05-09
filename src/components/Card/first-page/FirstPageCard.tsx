@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import CardButtons from "./card-element/CardButtons";
 
 import FirstPageName from "./card-element/FirstPageName";
 import SecondPageCard from "./second-page/SecondPageCard";
 import FirstPageBody from "./card-element/FirstPageBody";
 import AddToCart from "./card-element/AddToCart";
+import Icon from "../Icon";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 export default function FirstPageCard({
   top,
   setChosenItem,
@@ -14,11 +16,11 @@ export default function FirstPageCard({
   tempCart,
   setTempCart,
 }: any) {
+  const [heartIcon, setHeartIcon] = useState<any>(
+    <AiOutlineHeart id="empty" size="24" />
+  );
   return (
-    <div
-      className="relative flex flex-wrap justify-around items-center"
-      //flex flex-wrap justify-center items-start border-4 border-red-700
-    >
+    <div className="relative flex flex-wrap justify-around items-center">
       {top?.map((e: any, idx: number) => {
         return (
           <div
@@ -48,6 +50,19 @@ export default function FirstPageCard({
                     tempCart={tempCart}
                     setTempCart={setTempCart}
                   />
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => {
+                      if (heartIcon.props.id === "full")
+                        setHeartIcon(<AiOutlineHeart id="empty" size="24" />);
+                      else {
+                        console.log("else");
+                        setHeartIcon(<AiFillHeart id="full" size="24" />);
+                      }
+                    }}
+                  >
+                    <Icon icon={heartIcon} />
+                  </div>
                 </div>
               </div>
               {/* below is back page */}
