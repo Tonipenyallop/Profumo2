@@ -7,5 +7,7 @@ export async function seed(knex: Knex): Promise<void> {
   await knex("users").insert({
     email: "practice@gmail.com",
     password: 12341234,
+    address: "Bankrasweg 1, 1183 TP Amstelveen, Netherlands",
+    username: "Toni Peña",
   });
 }

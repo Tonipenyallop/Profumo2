@@ -37,9 +37,7 @@ app.post("/sign-up", async (req: Request, res: Response) => {
 
     const email = await db.select("*").from("users").where("email", user.email);
     isAlreadyUser = email.length >= 1 ? true : false;
-    console.log(`email len ${email.length}`);
-    console.log("email", email);
-    console.log(isAlreadyUser);
+
     if (!isAlreadyUser) {
       console.log(req.body);
       await db("users").insert(req.body);

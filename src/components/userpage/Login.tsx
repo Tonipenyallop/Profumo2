@@ -6,6 +6,9 @@ export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+
   const [warningMessage, setWarningMessage] = useState<string>("");
 
   function appearErrorMessage(upOrIn: string): void {
@@ -37,12 +40,17 @@ export default function Login() {
   }
 
   async function login() {
-    if (!email || !password) {
+    if (!email || !password || !address || !username) {
       appearErrorMessage("in");
       setWarningMessage("Please fill out this form");
       return;
     }
-    const login = await axios.post("/login", { email, password });
+    const login = await axios.post("/login", {
+      email,
+      password,
+      address,
+      username,
+    });
     const response = login.data;
     if (response === "success") {
       window.localStorage.setItem("isLogin", "true");
@@ -97,6 +105,13 @@ export default function Login() {
             {warningMessage}
           </div>
           <input
+            id="nameInput"
+            className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500"
+            type="text"
+            placeholder="*Username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
             id="emailInput"
             className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500 "
             type="text"
@@ -108,6 +123,13 @@ export default function Login() {
             className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500"
             type="password"
             placeholder="*Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            id="addressInput"
+            className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500"
+            type="text"
+            placeholder="*Address"
             onChange={(e) => setPassword(e.target.value)}
           />
 
