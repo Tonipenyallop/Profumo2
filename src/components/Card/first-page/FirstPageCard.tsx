@@ -7,7 +7,7 @@ import FirstPageBody from "./card-element/FirstPageBody";
 import AddToCart from "./card-element/AddToCart";
 import Icon from "../Icon";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { getElement } from "../../../app/gettingFunctions";
+import { getChosenItemName, getElement } from "../../../app/gettingFunctions";
 export default function FirstPageCard({
   top,
   setChosenItem,
@@ -18,13 +18,35 @@ export default function FirstPageCard({
   setTempCart,
 }: any) {
   const [isChanged, setIsChanged] = useState<boolean>(false);
-  function toggleHeart(idx: number) {
+
+  function toggleHeart(idx: number): void {
     let heart = document.getElementsByClassName("heart")[idx];
-    if (heart.textContent === "♥") heart.textContent = "♡";
-    else heart.textContent = "♥";
-    heart.classList.add("text-3xl");
+    let isLiked: boolean;
+    if (heart.textContent === "♥") {
+      isLiked = false;
+      heart.textContent = "♡";
+    } else {
+      isLiked = true;
+      heart.textContent = "♥";
+    }
+    heart.classList.add("text-3xl", "outline-none");
+
+    // // storing in local storage
+    storeLikesOnLocalStorage(idx, isLiked);
+  }
+
+  function storeLikesOnLocalStorage(idx: number, isLiked: boolean): void {
+    const element = getElement(idx);
+    const name = getChosenItemName(element);
+
+    const localObjLiked: any = window.localStorage.getItem("liked");
+    let parsedObjLiked = JSON.parse(localObjLiked);
+    if (isLiked) parsedObjLiked[name] = { liked: true };
+    else parsedObjLiked[name] = { liked: false };
+    window.localStorage.setItem("liked", JSON.stringify(parsedObjLiked));
     setIsChanged(!isChanged);
   }
+
   return (
     <div className="relative flex flex-wrap justify-around items-center">
       {top?.map((e: any, idx: number) => {
@@ -58,7 +80,7 @@ export default function FirstPageCard({
                   />
                   <div
                     id="heart"
-                    className="heart cursor-pointer "
+                    className="heart cursor-pointer outline-none"
                     onClick={() => {
                       toggleHeart(idx);
                     }}
