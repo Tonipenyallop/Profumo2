@@ -37,8 +37,6 @@ export default function Total({ allItems, tempCart }: any) {
         <div className=""></div>
       ) : (
         <div className="flex flex-col justify-start items-center text-black bg-gray-200 w-[450px] h-56 my-5 py-5 mx-5 ">
-          {/* <script src="https://js.stripe.com/v3/"></script> */}
-
           <div className="flex ">ORDER SUMMARY</div>
 
           <div className="flex my-10">TOTAL - €{getTotal()} </div>

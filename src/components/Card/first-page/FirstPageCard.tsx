@@ -7,7 +7,11 @@ import FirstPageBody from "./card-element/FirstPageBody";
 import AddToCart from "./card-element/AddToCart";
 import Icon from "../Icon";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { getChosenItemName, getElement } from "../../../app/gettingFunctions";
+import {
+  getChosenItemImage,
+  getChosenItemName,
+  getElement,
+} from "../../../app/gettingFunctions";
 export default function FirstPageCard({
   top,
   setChosenItem,
@@ -23,6 +27,8 @@ export default function FirstPageCard({
   useEffect(() => {
     const likesLocal: any = window.localStorage.getItem("liked");
     const parsedLikes = JSON.parse(likesLocal);
+    const obj = window.localStorage.getItem("liked");
+    if (obj === null) window.localStorage.setItem("liked", JSON.stringify({}));
 
     for (let key in parsedLikes) {
       top.map((e: any, idx: number) => {
@@ -57,10 +63,11 @@ export default function FirstPageCard({
   function storeLikesOnLocalStorage(idx: number, isLiked: boolean): void {
     const element = getElement(idx);
     const name = getChosenItemName(element);
-
+    const url = getChosenItemImage(element);
     const localObjLiked: any = window.localStorage.getItem("liked");
     let parsedObjLiked = JSON.parse(localObjLiked);
-    if (isLiked) parsedObjLiked[name] = { liked: true };
+    console.log(parsedObjLiked);
+    if (isLiked) parsedObjLiked[name] = { liked: true, name, url };
     else parsedObjLiked[name] = { liked: false };
     window.localStorage.setItem("liked", JSON.stringify(parsedObjLiked));
     setIsChanged(!isChanged);
