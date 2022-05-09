@@ -1,37 +1,50 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 export default function Login() {
+  const navigate = useNavigate();
+  const [warningMessage, setWarningMessage] = useState<string>("");
+  function appearErrorMessage(upOrIn: string): void {
+    const warning = document.getElementById(`warning-sign-${upOrIn}`);
+    console.log(warning);
+    warning?.classList.remove("opacity-0");
+    warning?.classList.add("opacity-100");
+    setTimeout(() => {
+      warning?.classList.remove("opacity-100");
+      warning?.classList.add("opacity-0");
+    }, 5000);
+    return;
+  }
   async function signUp() {
     if (!email || !password) {
-      const warning = document.getElementById("warning-sign-up");
-      warning?.classList.remove("opacity-0");
-      warning?.classList.add("opacity-100");
-      setTimeout(() => {
-        warning?.classList.remove("opacity-100");
-        warning?.classList.add("opacity-0");
-      }, 5000);
+      appearErrorMessage("up");
+      setWarningMessage("Please fill out this form");
       return;
     }
 
-    await axios.post("/sign-in", { email, password });
+    const request = await axios.post("/sign-up", { email, password });
+    const response = request.data;
+
+    if (response === "already user") {
+      appearErrorMessage("up");
+      setWarningMessage("Already have an account");
+      return;
+    }
   }
   async function login() {
     if (!email || !password) {
-      const warning = document.getElementById("warning-sign-in");
-
-      warning?.classList.remove("opacity-0");
-      warning?.classList.add("opacity-100");
-      setTimeout(() => {
-        warning?.classList.remove("opacity-100");
-        warning?.classList.add("opacity-0");
-      }, 5000);
+      appearErrorMessage("in");
+      setWarningMessage("Please fill out this form");
       return;
     }
-
     const login = await axios.post("/login", { email, password });
-    const data = login.data;
-    if (data === "success") console.log("navigate function here");
-    else console.log("warning message appear");
+    const response = login.data;
+    if (response === "success") navigate("/user-page");
+    else {
+      appearErrorMessage("in");
+      setWarningMessage("Password or Email is wrong");
+    }
   }
   function changeForm() {
     const createAccount = document.getElementById("sign-up");
@@ -75,7 +88,7 @@ export default function Login() {
             id="warning-sign-up"
             className="opacity-0 text-red-500 bg-red-200 transition-all duration-700 px-4 my-1"
           >
-            you need to fill out this form{" "}
+            {warningMessage}
           </div>
           <input
             id="emailInput"
@@ -103,7 +116,7 @@ export default function Login() {
             id="warning-sign-in"
             className="opacity-0 text-red-500 bg-red-200 transition-all duration-700 px-4 my-1"
           >
-            you need to fill out this form{" "}
+            {warningMessage}
           </div>
           <input
             id="emailInput-sign-in"

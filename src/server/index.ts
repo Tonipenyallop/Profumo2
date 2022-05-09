@@ -30,10 +30,23 @@ app.get("/winter-all", async (_: Request, res: Response) => {
   res.send(all);
 });
 
-app.post("/sign-in", async (req: Request, res: Response) => {
+app.post("/sign-up", async (req: Request, res: Response) => {
   try {
-    await db("users").insert(req.body);
-    res.send("success").status(200);
+    const user = req.body;
+    let isAlreadyUser: boolean;
+
+    const email = await db.select("*").from("users").where("email", user.email);
+    isAlreadyUser = email.length >= 1 ? true : false;
+    console.log(`email len ${email.length}`);
+    console.log("email", email);
+    console.log(isAlreadyUser);
+    if (!isAlreadyUser) {
+      console.log(req.body);
+      await db("users").insert(req.body);
+      res.send("success").status(200);
+    } else {
+      res.send("already user");
+    }
   } catch (err) {
     res.send(err).status(500);
   }

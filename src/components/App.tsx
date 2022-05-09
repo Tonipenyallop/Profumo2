@@ -11,6 +11,7 @@ import Winter from "./winter/winter";
 import Success from "./Success";
 import Cancel from "./Cancel";
 import Login from "./userpage/Login";
+import Userpage from "./userpage/Userpage";
 function App() {
   const [allItems, setAllItems] = useState<any>([]);
   const [chosenItem, setChosenItem] = useState<any>(false);
@@ -76,7 +77,8 @@ function App() {
             />
           }
         />
-        <Route path="login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/user-page" element={<Userpage />} />
         <Route path="/success" element={<Success />} />
         <Route path="/cancel" element={<Cancel />} />
       </Routes>
