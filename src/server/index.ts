@@ -30,6 +30,27 @@ app.get("/winter-all", async (_: Request, res: Response) => {
   res.send(all);
 });
 
+app.post("/sign-in", async (req: Request, res: Response) => {
+  try {
+    await db("users").insert(req.body);
+    res.send("success").status(200);
+  } catch (err) {
+    res.send(err).status(500);
+  }
+});
+
+app.post("/login", async (req: Request, res: Response) => {
+  console.log(req.body);
+  const user = await db
+    .select("email", "password")
+    .from("users")
+    .where("email", req.body.email)
+    .andWhere("password", req.body.password);
+  console.log("user", user);
+  if (user.length === 0) res.send("fail");
+  else if (user.length === 1) res.send("success");
+});
+
 app.post("/create-checkout-session", async (req: Request, res: Response) => {
   const cart = req.body.cart;
   const parsedCart = JSON.parse(cart);
@@ -73,16 +94,5 @@ app.post("/create-checkout-session", async (req: Request, res: Response) => {
   });
   res.redirect(303, session.url);
 });
-
-// stripe.confirmCardPayment().then(function (response: any) {
-//   if (response.error) {
-//     // Handle error here
-//   } else if (
-//     response.paymentIntent &&
-//     response.paymentIntent.status === "succeeded"
-//   ) {
-//     // Handle successful payment here
-//   }
-// });
 
 app.listen(PORT, () => console.log(`Listing PORT ${PORT}`));

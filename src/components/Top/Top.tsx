@@ -20,7 +20,7 @@ export default function Top({
   async function getAllTop(): Promise<void> {
     const res = await axios.get("/all");
     const data = res.data;
-    console.log(data);
+
     setTop(data);
   }
 

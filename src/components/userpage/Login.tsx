@@ -1,34 +1,128 @@
-import React from "react";
-
+import React, { useState } from "react";
+import axios from "axios";
 export default function Login() {
+  async function signUp() {
+    if (!email || !password) {
+      const warning = document.getElementById("warning-sign-up");
+      warning?.classList.remove("opacity-0");
+      warning?.classList.add("opacity-100");
+      setTimeout(() => {
+        warning?.classList.remove("opacity-100");
+        warning?.classList.add("opacity-0");
+      }, 5000);
+      return;
+    }
+
+    await axios.post("/sign-in", { email, password });
+  }
+  async function login() {
+    if (!email || !password) {
+      const warning = document.getElementById("warning-sign-in");
+
+      warning?.classList.remove("opacity-0");
+      warning?.classList.add("opacity-100");
+      setTimeout(() => {
+        warning?.classList.remove("opacity-100");
+        warning?.classList.add("opacity-0");
+      }, 5000);
+      return;
+    }
+
+    const login = await axios.post("/login", { email, password });
+    const data = login.data;
+    if (data === "success") console.log("navigate function here");
+    else console.log("warning message appear");
+  }
+  function changeForm() {
+    const createAccount = document.getElementById("sign-up");
+    const signUpForm = document.getElementById("sign-up-form");
+    createAccount?.classList.add("opacity-0", "pointer-events-none");
+    setTimeout(() => {
+      signUpForm?.classList.remove("opacity-0", "pointer-events-none");
+    }, 500);
+  }
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   return (
     <div className="relative top-[145px]">
-      <p className="text-center text-4xl my-3">YOUR ACCOUNT</p>
-      <div className="flex justify-around items-center">
-        <div className="border-r-2 flex flex-col justify-center items-center w-[50%]">
+      <p className="text-center text-4xl my-3 ">YOUR ACCOUNT</p>
+      <div className="relative flex justify-around items-center ">
+        <div
+          id="sign-up"
+          className="flex flex-col justify-center items-center w-[50%] transition-all duration-1000"
+        >
           <div className="text-2xl my-10">NEW CLIENT</div>
           <div className="mx-5 break-words">
             Create an account to track & manage orders, view your account &{" "}
             <br />
             loyalty information, as well as manage your Wishlist.
           </div>
-          <button className="button my-5">CREATE ACCOUNT</button>
+          <button
+            className="button my-5 z-20"
+            onClick={() => {
+              changeForm();
+            }}
+          >
+            CREATE ACCOUNT
+          </button>
         </div>
-
-        <div className="border-l-2- flex flex-col justify-center items-center w-[50%]">
-          <div className="text-2xl my-10">ALREADY HAVE AN ACCOUNT?</div>
+        <div
+          id="sign-up-form"
+          className="absolute flex flex-col justify-around items-center left-0 top-0 w-[50%] my-3 transition-all duration-700 pointer-events-none opacity-0"
+        >
+          <div className="flex mt-10 text-2xl">REGISTER</div>
+          <div
+            id="warning-sign-up"
+            className="opacity-0 text-red-500 bg-red-200 transition-all duration-700 px-4 my-1"
+          >
+            you need to fill out this form{" "}
+          </div>
           <input
-            className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500"
+            id="emailInput"
+            className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500 "
             type="text"
             placeholder="*Email Address"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
+            id="passwordInput"
             className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500"
             type="password"
             placeholder="*Password"
+            onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button className="button my-5">SIGN IN</button>
+          <button className="button my-5" onClick={signUp}>
+            SIGN UP
+          </button>
+        </div>
+
+        <div className="border-l-2- flex flex-col justify-center items-center w-[50%] border-l-2">
+          <div className="text-2xl mt-10">ALREADY HAVE AN ACCOUNT?</div>
+          <div
+            id="warning-sign-in"
+            className="opacity-0 text-red-500 bg-red-200 transition-all duration-700 px-4 my-1"
+          >
+            you need to fill out this form{" "}
+          </div>
+          <input
+            id="emailInput-sign-in"
+            className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500"
+            type="text"
+            placeholder="*Email Address"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            id="passwordInput-sign-in"
+            className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500"
+            type="password"
+            placeholder="*Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <button className="button my-5" onClick={login}>
+            SIGN IN
+          </button>
         </div>
       </div>
     </div>
