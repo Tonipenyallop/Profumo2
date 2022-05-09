@@ -7,6 +7,7 @@ import FirstPageBody from "./card-element/FirstPageBody";
 import AddToCart from "./card-element/AddToCart";
 import Icon from "../Icon";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { getElement } from "../../../app/gettingFunctions";
 export default function FirstPageCard({
   top,
   setChosenItem,
@@ -16,9 +17,14 @@ export default function FirstPageCard({
   tempCart,
   setTempCart,
 }: any) {
-  const [heartIcon, setHeartIcon] = useState<any>(
-    <AiOutlineHeart id="empty" size="24" />
-  );
+  const [isChanged, setIsChanged] = useState<boolean>(false);
+  function toggleHeart(idx: number) {
+    let heart = document.getElementsByClassName("heart")[idx];
+    if (heart.textContent === "♥") heart.textContent = "♡";
+    else heart.textContent = "♥";
+    heart.classList.add("text-3xl");
+    setIsChanged(!isChanged);
+  }
   return (
     <div className="relative flex flex-wrap justify-around items-center">
       {top?.map((e: any, idx: number) => {
@@ -51,17 +57,13 @@ export default function FirstPageCard({
                     setTempCart={setTempCart}
                   />
                   <div
-                    className="cursor-pointer"
+                    id="heart"
+                    className="heart cursor-pointer "
                     onClick={() => {
-                      if (heartIcon.props.id === "full")
-                        setHeartIcon(<AiOutlineHeart id="empty" size="24" />);
-                      else {
-                        console.log("else");
-                        setHeartIcon(<AiFillHeart id="full" size="24" />);
-                      }
+                      toggleHeart(idx);
                     }}
                   >
-                    <Icon icon={heartIcon} />
+                    <div className=" text-3xl">♡</div>
                   </div>
                 </div>
               </div>
