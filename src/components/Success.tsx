@@ -2,9 +2,13 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Success() {
   const navigate = useNavigate();
-  console.log("successfully finish payment");
+
   useEffect(() => {
-    window.localStorage.setItem("cart", JSON.stringify({}));
+    const localCart: any = window.localStorage.getItem("cart");
+    window.localStorage.setItem("purchasedItem", localCart);
+    setTimeout(() => {
+      window.localStorage.setItem("cart", JSON.stringify({}));
+    }, 500);
   });
   return (
     <div className="relative top-[145px] border-4 mx-10 my-10">

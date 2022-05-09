@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 export default function Userpage({ isLogin, setIsLogin }: any) {
+  const navigate = useNavigate();
   const likedLocal: any = window.localStorage.getItem("liked");
   const parsedLocalLiked = JSON.parse(likedLocal);
 
@@ -23,7 +24,6 @@ export default function Userpage({ isLogin, setIsLogin }: any) {
         arr.push(item);
       }
     }
-
     return arr;
   }
 
@@ -32,7 +32,9 @@ export default function Userpage({ isLogin, setIsLogin }: any) {
       <div className="flex justify-center border-red-500 border-4 ">
         <div className="flex flex-col border-2 border-red-500  ">
           <div className="">WELCOME MATE</div>
-          <div className="cursor-pointer">ORDER CONFIRMATION</div>
+          <div className="cursor-pointer" onClick={() => navigate("/orders")}>
+            ORDER CONFIRMATION
+          </div>
           <p className="cursor-pointer">FAVORITAS</p>
         </div>
         <div className="relative border-8 flex justify-end">
