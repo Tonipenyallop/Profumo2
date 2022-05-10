@@ -3,14 +3,25 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Orders() {
   const navigate = useNavigate();
+  let emailLocal: any;
   useEffect(() => {
     getUserAddress();
-    const emailLocal: any = window.localStorage.getItem("email");
+    emailLocal = window.localStorage.getItem("email");
     setEmail(emailLocal);
+    getOrder();
   }, []);
+
   const [address, setAddress] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  async function getUserAddress() {
+  const [orderNumber, setOrderNumber] = useState<number>(0);
+
+  async function getOrder() {
+    const request = await axios.post("/get_order", { email: emailLocal });
+    const response = request.data;
+    console.log(response);
+  }
+
+  async function getUserAddress(): Promise<void> {
     const email: any = window.localStorage.getItem("email");
 
     const response = await axios.post("/address", { email });
@@ -43,6 +54,7 @@ export default function Orders() {
     }
     return arr;
   }
+
   return (
     <div className="relative top-[150px]">
       <div className="flex justify-start border-red-500 border-4 ">

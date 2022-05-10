@@ -21,9 +21,9 @@ export default function Success() {
     const numberRequest = await axios.get("order_number");
     let order_number = numberRequest.data["order_number"];
     order_number += 1;
-    console.log(order_number);
+
+    // update the order number in database
     await axios.post("/order_number", { order_number });
-    console.log("number was updated");
 
     const request = await axios.post("/order", { item, email, order_number });
     const response = request.data;

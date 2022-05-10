@@ -35,6 +35,7 @@ app.post("/address", async (req: Request, res: Response) => {
     .select("address")
     .from("users")
     .where("email", req.body.email);
+
   address = address[0].address;
   res.send(address);
 });
@@ -59,13 +60,12 @@ app.post("/sign-up", async (req: Request, res: Response) => {
 });
 
 app.post("/login", async (req: Request, res: Response) => {
-  console.log(req.body);
   const user = await db
     .select("email", "password")
     .from("users")
     .where("email", req.body.email)
     .andWhere("password", req.body.password);
-  console.log("user", user);
+
   if (user.length === 0) res.send("fail");
   else if (user.length === 1) res.send("success");
 });
@@ -79,16 +79,23 @@ app.get("/order_number", async (req: Request, res: Response) => {
 
 app.post("/order_number", async (req: Request, res: Response) => {
   const number = req.body;
-
   const orderNumber = await db
     .select("order_number")
     .from("order_numbers")
     .where("order_number", number.order_number);
+
   if (orderNumber.length >= 1) res.send("already added");
   else {
     await db("order_numbers").insert(req.body);
     res.send("successfully update value");
   }
+});
+
+app.post("/get_order", async (req: Request, res: Response) => {
+  const email = req.body.email;
+  const orders = await db.select("*").from("orders").where("email", email);
+
+  res.send(orders);
 });
 
 app.post("/order", async (req: Request, res: Response) => {
