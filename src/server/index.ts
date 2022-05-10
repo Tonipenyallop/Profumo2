@@ -70,10 +70,37 @@ app.post("/login", async (req: Request, res: Response) => {
   else if (user.length === 1) res.send("success");
 });
 
+app.get("/order_number", async (req: Request, res: Response) => {
+  const getNumbers = await db.select("order_number").from("order_numbers");
+  const order_number = getNumbers[getNumbers.length - 1];
+
+  res.send(order_number).status(200);
+});
+
+app.post("/order_number", async (req: Request, res: Response) => {
+  const number = req.body;
+
+  const orderNumber = await db
+    .select("order_number")
+    .from("order_numbers")
+    .where("order_number", number.order_number);
+  if (orderNumber.length >= 1) res.send("already added");
+  else {
+    await db("order_numbers").insert(req.body);
+    res.send("successfully update value");
+  }
+});
+
 app.post("/order", async (req: Request, res: Response) => {
   try {
     const orderNumber = await db.select("order_number").from("orders");
-    if (orderNumber.length >= 1) res.send("already added");
+    const itemList = await db
+      .select("items")
+      .from("orders")
+      .where("order_number", req.body.order_number);
+    console.log(orderNumber, itemList);
+    if (itemList.length <= 0) res.send("empty box");
+    else if (orderNumber >= 1) res.send("already added");
     else {
       const item = req.body;
       await db("orders").insert({

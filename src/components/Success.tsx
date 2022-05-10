@@ -17,7 +17,13 @@ export default function Success() {
     const item = window.localStorage.getItem("purchasedItem");
     const email = window.localStorage.getItem("email");
 
-    const order_number = 84274;
+    // const order_number = 84274;
+    const numberRequest = await axios.get("order_number");
+    let order_number = numberRequest.data["order_number"];
+    order_number += 1;
+    console.log(order_number);
+    await axios.post("/order_number", { order_number });
+    console.log("number was updated");
 
     const request = await axios.post("/order", { item, email, order_number });
     const response = request.data;
