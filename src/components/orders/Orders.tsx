@@ -5,8 +5,11 @@ export default function Orders() {
   const navigate = useNavigate();
   useEffect(() => {
     getUserAddress();
+    const emailLocal: any = window.localStorage.getItem("email");
+    setEmail(emailLocal);
   }, []);
   const [address, setAddress] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   async function getUserAddress() {
     const email: any = window.localStorage.getItem("email");
 
@@ -20,15 +23,19 @@ export default function Orders() {
     const arr = [];
     for (let key in parsedPurchasedItem) {
       const item = (
-        <div className="border-4 flex justify-start items-center" key={key}>
+        <div className="border-4 flex justify-start items-start" key={key}>
           <img
             className="w-[150px]"
             src={parsedPurchasedItem[key]?.url}
             alt="item I like"
           />
-          <p className="text-xl">{parsedPurchasedItem[key]?.name}</p>
-          <p>{parsedPurchasedItem[key]?.price}</p>
-          <p className="text-gray-400">x{parsedPurchasedItem[key]?.quantity}</p>
+          <div className="flex flex-col border-2 justify-start items-start">
+            <p className="text-xl">{parsedPurchasedItem[key]?.name}</p>
+            <p className="text-gray-400">
+              x{parsedPurchasedItem[key]?.quantity}
+            </p>
+          </div>
+          <p className="border-2">{parsedPurchasedItem[key]?.price}</p>
         </div>
       );
 
@@ -62,9 +69,15 @@ export default function Orders() {
             <div className="font-bold">Delivery address</div>
             <div className="">{address}</div>
           </div>
-          <div className="border-4 ">Email</div>
+          <div className="border-4 ">
+            <div className="font-bold">Email</div>
+            <div className="">{email}</div>
+          </div>
         </div>
-        <div className="border-4 ">TOTAL €XXX</div>
+        <div className="border-4 text-sm">
+          <div className="">TOTAL</div>
+          <div className="text-2xl">€XXX</div>
+        </div>
         <div className="border-4 w-[50%]">{getOrderedItems()}</div>
       </div>
 
