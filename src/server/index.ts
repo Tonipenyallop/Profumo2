@@ -70,6 +70,25 @@ app.post("/login", async (req: Request, res: Response) => {
   else if (user.length === 1) res.send("success");
 });
 
+app.post("/order", async (req: Request, res: Response) => {
+  try {
+    const orderNumber = await db.select("order_number").from("orders");
+    if (orderNumber.length >= 1) res.send("already added");
+    else {
+      const item = req.body;
+      await db("orders").insert({
+        email: item.email,
+        order_number: item.order_number,
+        items: item.item,
+      });
+      console.log("successfully insert new data");
+      res.send("success");
+    }
+  } catch (err) {
+    res.send({ err });
+  }
+});
+
 app.post("/create-checkout-session", async (req: Request, res: Response) => {
   const cart = req.body.cart;
   const parsedCart = JSON.parse(cart);

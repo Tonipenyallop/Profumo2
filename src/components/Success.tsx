@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Success() {
@@ -6,10 +7,23 @@ export default function Success() {
   useEffect(() => {
     const localCart: any = window.localStorage.getItem("cart");
     window.localStorage.setItem("purchasedItem", localCart);
+    setOrderItem();
     setTimeout(() => {
       window.localStorage.setItem("cart", JSON.stringify({}));
     }, 500);
   });
+
+  async function setOrderItem() {
+    const item = window.localStorage.getItem("purchasedItem");
+    const email = window.localStorage.getItem("email");
+
+    const order_number = 84274;
+
+    const request = await axios.post("/order", { item, email, order_number });
+    const response = request.data;
+    console.log(response);
+  }
+
   return (
     <div className="relative top-[145px] border-4 mx-10 my-10">
       <p className="text-7xl text-center my-4">PROFUMO</p>
