@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import SignIn from "./SignIn";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -43,27 +44,7 @@ export default function Login() {
       return;
     } else if (response === "success") {
       console.log("success page or something to show");
-    }
-  }
-
-  async function login() {
-    if (!email || !password) {
-      appearErrorMessage("in");
-      setWarningMessage("Please fill out this form");
-      return;
-    }
-    const login = await axios.post("/login", {
-      email,
-      password,
-    });
-    const response = login.data;
-    if (response === "success") {
-      window.localStorage.setItem("isLogin", "true");
-      window.localStorage.setItem("email", email);
-      navigate("/user-page");
-    } else {
-      appearErrorMessage("in");
-      setWarningMessage("Password or Email is wrong");
+      navigate("/orders");
     }
   }
 
@@ -79,7 +60,7 @@ export default function Login() {
   return (
     <div className="relative top-[145px]">
       <p className="text-center text-4xl my-3 ">YOUR ACCOUNT</p>
-      <div className="relative flex justify-around items-center ">
+      <div className="relative flex justify-around items-center  ">
         <div
           id="sign-up"
           className="flex flex-col justify-center items-center w-[50%] transition-all duration-1000"
@@ -144,7 +125,7 @@ export default function Login() {
           </button>
         </div>
 
-        <div className="border-l-2- flex flex-col justify-center items-center w-[50%] border-l-2">
+        {/* <div className="border-l-2- flex flex-col justify-center items-center w-[50%] border-l-2">
           <div className="text-2xl mt-10">ALREADY HAVE AN ACCOUNT?</div>
           <div
             id="warning-sign-in"
@@ -170,7 +151,15 @@ export default function Login() {
           <button className="button my-5" onClick={login}>
             SIGN IN
           </button>
-        </div>
+        </div> */}
+        <SignIn
+        // warningMessage={warningMessage}
+        // setWarningMessage={setWarningMessage}
+        // email={email}
+        // setEmail={setEmail}
+        // password={password}
+        // setPassword={setPassword}
+        />
       </div>
     </div>
   );

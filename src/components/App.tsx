@@ -14,6 +14,7 @@ import Login from "./userpage/Login";
 import Userpage from "./userpage/Userpage";
 import AccountPage from "./userpage/Account";
 import Orders from "./orders/Orders";
+import Thanks from "./userpage/Thanks";
 function App() {
   const [allItems, setAllItems] = useState<any>([]);
   const [chosenItem, setChosenItem] = useState<any>(false);
@@ -82,6 +83,7 @@ function App() {
         {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/account" element={<AccountPage />} />
         <Route path="/user-page" element={<Userpage />} />
+        <Route path="/thanks" element={<Thanks />} />
         <Route path="/success" element={<Success />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/cancel" element={<Cancel />} />
