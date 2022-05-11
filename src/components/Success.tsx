@@ -1,33 +1,51 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function Success() {
   const navigate = useNavigate();
 
+  async function timeout(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+  // why useeffect run twice in a row?
   useEffect(() => {
+    let isCanceled = false;
     const localCart: any = window.localStorage.getItem("cart");
     window.localStorage.setItem("purchasedItem", localCart);
-    setOrderItem();
+
+    const waitSecond = async () => {
+      await timeout(1000);
+      if (!isCanceled) setOrderItem();
+    };
+
+    waitSecond();
+
     setTimeout(() => {
       window.localStorage.setItem("cart", JSON.stringify({}));
     }, 500);
-  });
+    return () => {
+      isCanceled = true;
+    };
+  }, []);
 
   async function setOrderItem() {
     const item = window.localStorage.getItem("purchasedItem");
     const email = window.localStorage.getItem("email");
 
-    // const order_number = 84274;
+    // comment out from here
     const numberRequest = await axios.get("order_number");
+
+    console.log(numberRequest);
     let order_number = numberRequest.data["order_number"];
     order_number += 1;
 
     // update the order number in database
-    await axios.post("/order_number", { order_number });
-
+    const aaa = await axios.post("/order_number", { order_number });
+    // console.log("order-number response", aaa.data);
+    console.log(item, email, order_number);
     const request = await axios.post("/order", { item, email, order_number });
-    const response = request.data;
-    console.log(response);
+    // const response = request.data;
+    // console.log(response);
   }
 
   return (
