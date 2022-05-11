@@ -70,6 +70,8 @@ export default function Orders() {
   return (
     <div className="relative top-[150px] ">
       <UserpageMenubar />
+      <p className="text-2xl mx-10 py-3">ORDERS</p>
+
       {order.map((e: any, idx: number) => {
         return (
           <div
