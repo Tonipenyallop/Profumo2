@@ -29,15 +29,27 @@ export default function Orders() {
     const response = await axios.post("/address", { email });
     setAddress(response.data);
   }
-
+  console.log(order);
   return (
     <div className="relative top-[150px] ">
       <UserpageMenubar />
       <p className="text-2xl mx-10 py-3">ORDERS</p>
 
-      {order.map((e: any, idx: number) => {
-        return <OrderElement idx={idx} e={e} address={address} email={email} />;
-      })}
+      {order.length === 0 ? (
+        <div className="top-96 text-center">No items were purchased yet</div>
+      ) : (
+        order.map((e: any, idx: number) => {
+          return (
+            <OrderElement
+              key={`${idx}`}
+              idx={idx}
+              e={e}
+              address={address}
+              email={email}
+            />
+          );
+        })
+      )}
     </div>
   );
 }
