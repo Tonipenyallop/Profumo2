@@ -41,16 +41,6 @@ export default function Userpage({ isLogin, setIsLogin }: any) {
       <UserpageMenubar />
       <p className="text-2xl mx-20 py-3">WISH LIST</p>
       <div className="flex flex-col">{getItemLists()}</div>
-
-      <button
-        className="button"
-        onClick={() => {
-          //   window.localStorage.setItem("isLogin", "false");
-          //   setIsLogin("false");
-        }}
-      >
-        Log out
-      </button>
     </div>
   );
 }

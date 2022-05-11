@@ -4,7 +4,7 @@ export default function UserpageMenubar() {
   const navigate = useNavigate();
   return (
     <div className="flex justify-center">
-      <div className="flex justify-center items-center w-[100%]  ">
+      <div className="flex justify-center items-center w-[80%]">
         <div
           className="cursor-pointer mx-3 transition-all duration-300  hover:border-black text-gray-400 hover:text-black"
           onClick={() => navigate("/orders")}
@@ -18,6 +18,10 @@ export default function UserpageMenubar() {
           WISH LIST
         </p>
       </div>
+
+      <button className="border-b-2 border-black cursor-pointer font-thin ">
+        LOG OUT
+      </button>
     </div>
   );
 }

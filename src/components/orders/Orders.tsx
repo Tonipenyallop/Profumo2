@@ -68,16 +68,7 @@ export default function Orders() {
   }
 
   return (
-    <div className="relative top-72 ">
-      {/* <div className="flex flex-col  border-2 border-red-500  ">
-        <div className="">WELCOME MATE</div>
-        <div className="cursor-pointer" onClick={() => navigate("/orders")}>
-          ORDER CONFIRMATION
-        </div>
-        <p className="cursor-pointer" onClick={() => navigate("/account")}>
-          FAVORITAS
-        </p>
-      </div> */}
+    <div className="relative top-[150px] ">
       <UserpageMenubar />
       {order.map((e: any, idx: number) => {
         return (
@@ -85,9 +76,6 @@ export default function Orders() {
             className="flex justify-start border-b-2 mx-10 my-5 py-5 "
             key={`${idx}`}
           >
-            {/* <div className=" mx-2 ">
-              <div className="">5/12 </div>
-            </div> */}
             <div className=" w-[40%] grid grid-cols-2  ">
               <div className="  ">
                 <div className="font-bold ">ORDER No.</div>
@@ -115,16 +103,6 @@ export default function Orders() {
           </div>
         );
       })}
-
-      <button
-        className="button"
-        onClick={() => {
-          //   window.localStorage.setItem("isLogin", "false");
-          //   setIsLogin("false");
-        }}
-      >
-        Log out
-      </button>
 
       {/* <OrderTemplate address={address} email={email} /> */}
     </div>
