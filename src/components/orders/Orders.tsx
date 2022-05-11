@@ -21,7 +21,7 @@ export default function Orders() {
     const arr = [];
     for (let key in items) {
       const item = (
-        <div className="flex justify-start items-start " key={key}>
+        <div className="flex justify-start items-start" key={key}>
           <div className="flex w-[50%]">
             <img
               className="w-[150px]"
@@ -35,7 +35,7 @@ export default function Orders() {
           </div>
 
           <div className="flex justify-end items-end w-[50%] ">
-            <p className="flex mx-5 font-bold text-lg">{items[key]?.price}</p>
+            <p className="flex mx-5 font-bold text-md">{items[key]?.price}</p>
           </div>
         </div>
       );
@@ -58,7 +58,6 @@ export default function Orders() {
   }
 
   function getTotalCost(items: any): number {
-    console.log(items);
     let result = 0;
     for (let key in items) {
       const price = parseInt(items[key].price.split("€")[1]);
@@ -68,7 +67,7 @@ export default function Orders() {
   }
 
   return (
-    <div className="relative top-72">
+    <div className="relative top-72 ">
       <div className="flex flex-col  border-2 border-red-500  ">
         <div className="">WELCOME MATE</div>
         <div className="cursor-pointer" onClick={() => navigate("/orders")}>
@@ -80,7 +79,10 @@ export default function Orders() {
       </div>
       {order.map((e: any, idx: number) => {
         return (
-          <div className="flex justify-start border-b-2 mx-10 " key={`${idx}`}>
+          <div
+            className="flex justify-start border-b-2 mx-10 my-5 py-5 "
+            key={`${idx}`}
+          >
             {/* <div className=" mx-2 ">
               <div className="">5/12 </div>
             </div> */}
@@ -102,11 +104,11 @@ export default function Orders() {
                 <div className="">{email}</div>
               </div>
             </div>
-            <div className=" text-sm px-3">
-              <div className="">TOTAL</div>
-              <div className="text-2xl">€{getTotalCost(e.items)}</div>
+            <div className=" text-sm px-5">
+              <div className="font-bold text-md">TOTAL</div>
+              <div className="text-xl font-bold ">€{getTotalCost(e.items)}</div>
             </div>
-            <div className="w-[50%]">{getItem(e.items)}</div>
+            <div className="w-[50%] ">{getItem(e.items)}</div>
             {/* <div className="border-4 w-[50%]">{getOrderedItems()}</div> */}
           </div>
         );

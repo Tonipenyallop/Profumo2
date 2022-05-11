@@ -10,6 +10,7 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import {
   getChosenItemImage,
   getChosenItemName,
+  getChosenItemPrice,
   getElement,
 } from "../../../app/gettingFunctions";
 export default function FirstPageCard({
@@ -63,10 +64,11 @@ export default function FirstPageCard({
     const element = getElement(idx);
     const name = getChosenItemName(element);
     const url = getChosenItemImage(element);
+    const price = getChosenItemPrice(element);
     const localObjLiked: any = window.localStorage.getItem("liked");
     let parsedObjLiked = JSON.parse(localObjLiked);
-    console.log(parsedObjLiked);
-    if (isLiked) parsedObjLiked[name] = { liked: true, name, url };
+
+    if (isLiked) parsedObjLiked[name] = { liked: true, name, url, price };
     else parsedObjLiked[name] = { liked: false };
     window.localStorage.setItem("liked", JSON.stringify(parsedObjLiked));
     setIsChanged(!isChanged);
