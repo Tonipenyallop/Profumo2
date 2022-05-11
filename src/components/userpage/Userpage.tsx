@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserpageMenubar from "./UserpageMenubar";
 export default function Userpage({ isLogin, setIsLogin }: any) {
-  const navigate = useNavigate();
   const likedLocal: any = window.localStorage.getItem("liked");
   const parsedLocalLiked = JSON.parse(likedLocal);
 

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function UserpageMenubar() {
   const navigate = useNavigate();
+  function logout(): void {
+    window.localStorage.setItem("isLogin", "false");
+    navigate("/");
+  }
   return (
     <div className="flex justify-center">
       <div className="flex justify-center items-center w-[80%]">
@@ -19,7 +23,10 @@ export default function UserpageMenubar() {
         </p>
       </div>
 
-      <button className="border-b-2 border-black cursor-pointer font-thin ">
+      <button
+        className="border-b-2 border-black cursor-pointer font-thin "
+        onClick={logout}
+      >
         LOG OUT
       </button>
     </div>
