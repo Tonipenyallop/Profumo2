@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import UserpageMenubar from "./UserpageMenubar";
 export default function Userpage({ isLogin, setIsLogin }: any) {
   const navigate = useNavigate();
   const likedLocal: any = window.localStorage.getItem("liked");
@@ -37,17 +38,8 @@ export default function Userpage({ isLogin, setIsLogin }: any) {
 
   return (
     <div className="relative top-[150px]">
-      <div className="flex justify-center border-red-500 border-4 ">
-        <div className="flex flex-col border-2 w-[100%]  ">
-          <div className="">WELCOME MATE</div>
-          <div className="cursor-pointer" onClick={() => navigate("/orders")}>
-            ORDER CONFIRMATION
-          </div>
-          <p className="cursor-pointer">FAVORITAS</p>
-        </div>
-        <div className="relative border-8 flex justify-end"></div>
-      </div>
-
+      <UserpageMenubar />
+      <p className="text-2xl mx-20 py-3">WISH LIST</p>
       <div className="flex flex-col">{getItemLists()}</div>
 
       <button

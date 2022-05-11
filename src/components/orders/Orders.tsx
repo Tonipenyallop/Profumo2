@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import OrderTemplate from "./OrderTemplate";
+import UserpageMenubar from "../userpage/UserpageMenubar";
 export default function Orders() {
   // const [orderNumber, setOrderNumber] = useState<number>(0);
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ export default function Orders() {
 
   return (
     <div className="relative top-72 ">
-      <div className="flex flex-col  border-2 border-red-500  ">
+      {/* <div className="flex flex-col  border-2 border-red-500  ">
         <div className="">WELCOME MATE</div>
         <div className="cursor-pointer" onClick={() => navigate("/orders")}>
           ORDER CONFIRMATION
@@ -76,7 +77,8 @@ export default function Orders() {
         <p className="cursor-pointer" onClick={() => navigate("/account")}>
           FAVORITAS
         </p>
-      </div>
+      </div> */}
+      <UserpageMenubar />
       {order.map((e: any, idx: number) => {
         return (
           <div
