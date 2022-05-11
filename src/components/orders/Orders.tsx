@@ -57,6 +57,16 @@ export default function Orders() {
     setAddress(response.data);
   }
 
+  function getTotalCost(items: any): number {
+    console.log(items);
+    let result = 0;
+    for (let key in items) {
+      const price = parseInt(items[key].price.split("€")[1]);
+      result += price;
+    }
+    return result;
+  }
+
   return (
     <div className="relative top-72">
       <div className="flex flex-col  border-2 border-red-500  ">
@@ -94,7 +104,7 @@ export default function Orders() {
             </div>
             <div className=" text-sm px-3">
               <div className="">TOTAL</div>
-              <div className="text-2xl">€XXX</div>
+              <div className="text-2xl">€{getTotalCost(e.items)}</div>
             </div>
             <div className="w-[50%]">{getItem(e.items)}</div>
             {/* <div className="border-4 w-[50%]">{getOrderedItems()}</div> */}
