@@ -36,7 +36,7 @@ export default function Orders() {
       <p className="text-2xl mx-10 py-3">ORDERS</p>
 
       {order.length === 0 ? (
-        <div className="top-96 text-center">No items were purchased yet</div>
+        <div className="top-96 text-center">No items are purchased yet</div>
       ) : (
         order.map((e: any, idx: number) => {
           return (
