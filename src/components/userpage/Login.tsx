@@ -44,7 +44,7 @@ export default function Login() {
       return;
     } else if (response === "success") {
       console.log("success page or something to show");
-      navigate("/orders");
+      navigate("/thanks");
     }
   }
 
@@ -125,33 +125,6 @@ export default function Login() {
           </button>
         </div>
 
-        {/* <div className="border-l-2- flex flex-col justify-center items-center w-[50%] border-l-2">
-          <div className="text-2xl mt-10">ALREADY HAVE AN ACCOUNT?</div>
-          <div
-            id="warning-sign-in"
-            className="opacity-0 text-red-500 bg-red-200 transition-all duration-700 px-4 my-1"
-          >
-            {warningMessage}
-          </div>
-          <input
-            id="emailInput-sign-in"
-            className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500"
-            type="text"
-            placeholder="*Email Address"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            id="passwordInput-sign-in"
-            className="border-b-2 focus:border-b-2 focus:border-black outline-none my-3 transition-color duration-500"
-            type="password"
-            placeholder="*Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button className="button my-5" onClick={login}>
-            SIGN IN
-          </button>
-        </div> */}
         <SignIn
         // warningMessage={warningMessage}
         // setWarningMessage={setWarningMessage}
