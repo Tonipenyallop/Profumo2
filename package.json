@@ -2,6 +2,7 @@
   "name": "profumo",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8888",
   "engines": {
     "node": "18.5.0"
   },
