@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:8888",
+  "engines": {
+    "node": "18.5.0"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.3",
@@ -12,6 +15,7 @@
     "@types/stripe-v3": "^3.1.26",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
+    "axios": "^0.27.2",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "eslint": "^8.13.0",

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import {
   getChosenItemImage,
@@ -7,10 +7,10 @@ import {
 } from "../../app/gettingFunctions";
 export default function Cart({ visibleCart, setVisibleCart, chosenItem }: any) {
   const navigate = useNavigate();
-
-  setTimeout(() => {
-    if (visibleCart) setVisibleCart(false);
-  }, 5000);
+  const [isStopCart, setIsStopCart] = useState<boolean>(false);
+  // setTimeout(() => {
+  //   if (visibleCart) setVisibleCart(false);
+  // }, 5000);
 
   useEffect(() => {
     const cart = document.getElementById("cart");
@@ -24,6 +24,11 @@ export default function Cart({ visibleCart, setVisibleCart, chosenItem }: any) {
     getChosenItemImage(chosenItem);
     getChosenItemPrice(chosenItem);
     getChosenItemName(chosenItem);
+    // if item was clicked, reset timer
+    setTimeout(() => {
+      console.log("hehjcoia");
+      if (visibleCart) setVisibleCart(false);
+    }, 5000);
   }, [visibleCart]);
 
   return (
